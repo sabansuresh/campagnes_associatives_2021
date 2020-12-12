@@ -1,0 +1,62 @@
+:root{
+    --primary: #061244;
+    --secondary: #005480;
+    --background : #ffffff;
+  }
+
+  
+body{
+  background-color: var(--background);
+}
+
+#side-menu{
+  background-color: var(--primary);
+  color:var(--background);
+}
+
+#sidemenu_tag{
+    background-color : var(--secondary);
+}
+#sidemenu_tag a{
+    font-size: 2em;
+    color:#ffffff;
+}
+/* layout styles */
+nav, #myNav{
+    background: var(--secondary);
+}
+
+nav a{
+  text-transform: uppercase;
+
+}
+
+nav a span{
+  font-weight: bold;
+}
+nav .sidenav-trigger{
+  margin: 0;
+}
+
+.sectionTitle {
+    color:var(--secondary);
+    font-size: 2.7em;
+    font-weight: bold;
+    
+}
+
+
+#divide {
+    background-color: var(--primary);
+    color:var(--primary);
+}
+
+.listeCards {
+    flex-basis:300px;
+}
+
+.cardsContainer {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
