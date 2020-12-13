@@ -9,16 +9,16 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="mystyle.css">
   <link rel="icon" href="img/icon.png" />
-  <script src="/js/app.js"></script>
    <!-- Compiled and minified CSS -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
    <!-- Compiled and minified JavaScript -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+   <script type="module" src="/js/app.js"></script>
   <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png">
   <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
 </head>
-
+<body ng-app="app">
 <nav id ="myNav" class="z-depth-0">
   <div class="nav-wrapper container">
     <span class="left">
@@ -30,7 +30,7 @@
 
 <ul id="side-menu" class="sidenav side-menu">
   <li style="margin-top: 5px;"></li>
-  <li id ="sidemenu_tag">><a  class="waves-effect" >Page Principale</a></li>
+  <li id ="sidemenu_tag"><a  class="waves-effect" >Page Principale</a></li>
   <li style="margin-top: 5px;"></li>
   <li id ="sidemenu_tag"><a  class="waves-effect" >Match</a></li>
   <li style="margin-top: 5px;"></li>
@@ -42,14 +42,15 @@
   <li style="margin-top: 5px;"></li>
 </ul>
 
-<div class ="section">
+<div class ="section" ng-controller="BDE_Controller">
+
   <div class="center sectionTitle"> BDE </div>
   <div class="divider" id ="divide"></div>
 
-  <div class="container cardsContainer" id="containerBDE">
+  <div class="container cardsContainer ng-hide" ng-hide="BDE_cards" >
 
     <div class="card z-depth-4 listeCards">
-      <a onclick="displayinfoListeHeros()">
+      <a ng-click="BDE_display_liste1()">
         <div class="card-image">
           <img src="img/listeHeros.jpg">
         </div> 
@@ -57,17 +58,24 @@
     </div>
 
     <div class="card listeCards z-depth-4 ">
-      <div class="card-image">
-        <img src="img/ghostlisters.png">
-      </div>  
+      <a ng-click="BDE_display_liste2()">
+        <div class="card-image">
+          <img src="img/ghostlisters.png">
+        </div>  
+      </a>
     </div>
 
-
   </div>
 
-  <div id="infoBDEListeHeros" style="display: none;">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis excepturi blanditiis rerum atque reprehenderit inventore ipsa doloremque accusantium nam ipsam sed cupiditate, rem dolor dignissimos non unde commodi voluptas porro?
-  </div>
+  <div class="ng-hide listeDescription" ng-hide="BDE_liste1">
+    <a ng-click="BDE_display_cards()"> <i class="material-icons">undo</i>Retour aux autres listes</a>
+      hello liste 1 
+  </div >
+
+  <div class="ng-hide listeDescription" ng-hide="BDE_liste2">
+    <a ng-click="BDE_display_cards()"> <i class="material-icons">undo</i>Retour aux autres listes</a>
+      hello liste 2 
+  </div >
 
 </div>
 
@@ -93,3 +101,40 @@
   </div>
 
 </div>
+
+<script>
+  var app = angular.module("app", []);
+
+
+app.controller('BDE_Controller', function ($scope){
+
+  $scope.BDE_cards = false;
+  $scope.BDE_liste1 = true;
+  $scope.BDE_liste2 = true;
+
+  $scope.BDE_display_liste1 = () => {
+
+    $scope.BDE_cards = true;
+    $scope.BDE_liste1 = false;
+    $scope.BDE_liste2 = true;
+  
+  }
+
+  $scope.BDE_display_liste2 = () => {
+
+    $scope.BDE_cards = true;
+    $scope.BDE_liste1 = true;
+    $scope.BDE_liste2 = false;
+  
+  }
+
+  $scope.BDE_display_cards = () =>{
+    $scope.BDE_cards = false;
+    $scope.BDE_liste1 = true;
+    $scope.BDE_liste2 = true;
+  }
+})
+
+</script>
+</body>
+</html>
