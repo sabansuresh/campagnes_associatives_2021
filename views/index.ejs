@@ -68,7 +68,7 @@
       <% listes.forEach((liste, i) => { %>
         <div class="ng-hide listeDescription" ng-hide="BDE_liste<%=i%>">
           <a ng-click="BDE_display_cards()"> <i class="material-icons">undo</i>Retour aux autres listes</a>
-            liste: <%=liste.nom%>
+          <%- include('liste.ejs', {liste: liste}); %>
           </div >
       <% }); %>
 
@@ -99,7 +99,6 @@
           }
 
         <% }); %>
-
 
         $scope.BDE_display_cards = () => {
           $scope.BDE_cards = false;

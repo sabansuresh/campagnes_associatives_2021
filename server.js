@@ -20,6 +20,10 @@ listes = {
   Éclair: [ {nom: "link", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
             {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
           ]
+          ,
+  Éclair2: [ {nom: "link2", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
+            {nom: "adolf2", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
+          ]
 }
 
 /*
