@@ -33,7 +33,7 @@
     if (Object.hasOwnProperty.call(data, asso)) { %>
 
     <li style="margin-top: 5px;"></li>
-    <li id ="sidemenu_tag"><a  class="waves-effect" href="#" ><%=asso%></a></li>
+    <li id ="sidemenu_tag"><a  class="waves-effect" href="#<%=asso%>" ><%=asso%></a></li>
     <% } %>
   <% } %>
   <li style="margin-top: 5px;"></li>
@@ -47,7 +47,7 @@
   if (Object.hasOwnProperty.call(data, asso)) {
     const listes = data[asso]; %>
 
-    <div class="section" ng-controller="<%=asso%>_Controller">
+    <div id="<%=asso%>" class="section" ng-controller="<%=asso%>_Controller">
 
       <div class="center sectionTitle"> <%=asso%> </div>
       <div class="divider" id ="divide"></div>

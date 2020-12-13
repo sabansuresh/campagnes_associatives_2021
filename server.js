@@ -28,7 +28,25 @@ listes = {
   eclair2: [ {nom: "link2", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
             {nom: "adolf2", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
             {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
-          ]
+          ],
+          bde1: [ {nom: "gosthlisters", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
+                 {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"},
+                 {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"},
+                 {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
+          ],
+          eclair3: [ {nom: "link2", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
+                    {nom: "adolf2", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
+                    {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
+                  ],
+                  bdes: [ {nom: "gosthlisters", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
+                         {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"},
+                         {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"},
+                         {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
+                  ],
+                  eclairss: [ {nom: "link2", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
+                            {nom: "adolf2", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
+                            {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
+                          ]
 }
 
 /*
@@ -58,6 +76,7 @@ app.use(express.static(dir));
 app.get('/', async (req,res) => {
     res.render("index.ejs", {data: listes});
 });
+
 
 
 
