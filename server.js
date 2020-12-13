@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const http = require("http");
 const path = require('path');
 
+
+// Les données sur les listes
 listes = {
   bde: [ {nom: "gosthlisters", logo: "ghostlisters.png", pipo: false, html: "gosth"},
          {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros"}
@@ -11,43 +13,7 @@ listes = {
             {nom: "Adolf Éclair", logo: "listeAdolf.jpg", pipo: true, membres: ["Deenay", "Harrah"]}
           ]
 }
-/*
-listes = {
-  eclair: [ {nom: "link", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
-            {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
-            {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
-            {nom: "adolf", logo: "listeHeros.jpg", pipo: true },
-            {nom: "adolf", logo: "listeHeros.jpg", pipo: true }
 
-          ],
-  bde: [ {nom: "gosthlisters", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
-         {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"},
-         {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"},
-         {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
-  ],
-  eclair2: [ {nom: "link2", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
-            {nom: "adolf2", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
-            {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
-          ],
-          bde1: [ {nom: "gosthlisters", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
-                 {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"},
-                 {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"},
-                 {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
-          ],
-          eclair3: [ {nom: "link2", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
-                    {nom: "adolf2", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
-                    {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
-                  ],
-                  bdes: [ {nom: "gosthlisters", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
-                         {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"},
-                         {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"},
-                         {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
-                  ],
-                  eclairss: [ {nom: "link2", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
-                            {nom: "adolf2", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
-                            {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
-                          ]
-}*/
 
 /*
 for (const asso in data) {
@@ -74,16 +40,12 @@ app.use(express.json());
 app.use(express.static(dir));
 
 app.get('/', async (req,res) => {
-    res.render("index.ejs", {data: listes});
+    res.render("index.ejs", {data: listes}); // générer la page et la renvoyer
 });
 
-
-
-
 app.get('*', function(req, res){
-	res.redirect('/')
+	res.redirect('/') // rediriger toutes les pages sur la page principale
   });
-
 
 var server = http.createServer(app);
 
