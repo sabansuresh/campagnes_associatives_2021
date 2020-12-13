@@ -3,21 +3,21 @@ const bodyParser = require('body-parser');
 const http = require("http");
 const path = require('path');
 
-/*listes = {
-  bde: [ {nom: "gosthlisters", logo: "ghostlisters.jpg", pipo: false, html: "gosth.html"},
-         {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"}
+listes = {
+  bde: [ {nom: "gosthlisters", logo: "ghostlisters.png", pipo: false, html: "gosth"},
+         {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros"}
        ],
-  eclair: [ {nom: "404 dead Link", logo: "listeLink.jpg", pipo: false, html: "link.html"},
+  eclair: [ {nom: "404 dead Link", logo: "listeLink.jpg", pipo: false, html: "heros"},
             {nom: "Adolf Éclair", logo: "listeAdolf.jpg", pipo: true, membres: ["Deenay", "Harrah"]}
           ]
-}*/
-
+}
+/*
 listes = {
   eclair: [ {nom: "link", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
             {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
             {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
-            {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
-            {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
+            {nom: "adolf", logo: "listeHeros.jpg", pipo: true },
+            {nom: "adolf", logo: "listeHeros.jpg", pipo: true }
 
           ],
   bde: [ {nom: "gosthlisters", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
@@ -47,7 +47,7 @@ listes = {
                             {nom: "adolf2", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
                             {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
                           ]
-}
+}*/
 
 /*
 for (const asso in data) {

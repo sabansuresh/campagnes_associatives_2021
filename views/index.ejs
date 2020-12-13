@@ -72,7 +72,11 @@
       <% listes.forEach((liste, i) => { %>
         <div class="ng-hide listeDescription" ng-hide="<%=asso%>_liste<%=i%>">
           <a ng-click="<%=asso%>_display_cards()"> <i class="material-icons">undo</i>Retour aux autres listes</a>
-          <%- include('liste.ejs', {liste: liste}); %>
+          <% if (liste.html) { %>
+            <%- include('presentations/'+liste.html, {liste: liste}); %>
+          <% } else { %>
+            <%- include('default.ejs', {liste: liste}); %>
+          <% } %>
           </div >
       <% }); %>
 
