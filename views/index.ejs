@@ -29,16 +29,13 @@
 </nav>
 
 <ul id="side-menu" class="sidenav side-menu">
-  <li style="margin-top: 5px;"></li>
-  <li id ="sidemenu_tag"><a  class="waves-effect" >Page Principale</a></li>
-  <li style="margin-top: 5px;"></li>
-  <li id ="sidemenu_tag"><a  class="waves-effect" >Match</a></li>
-  <li style="margin-top: 5px;"></li>
-  <li id ="sidemenu_tag"><a  class="waves-effect">Notifications</a></li>
-  <li style="margin-top: 5px;"></li>
-  <li id ="sidemenu_tag"><a class="waves-effect" >À propos</a></li>
-  <li style="margin-top: 5px;"></li>
-  <li id ="sidemenu_tag"><a class="waves-effect">Classement</a></li>
+  <% for (const asso in data) {
+    if (Object.hasOwnProperty.call(data, asso)) { %>
+
+    <li style="margin-top: 5px;"></li>
+    <li id ="sidemenu_tag"><a  class="waves-effect" href="#" ><%=asso%></a></li>
+    <% } %>
+  <% } %>
   <li style="margin-top: 5px;"></li>
 </ul>
 
