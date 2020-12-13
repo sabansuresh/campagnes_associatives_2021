@@ -42,99 +42,78 @@
   <li style="margin-top: 5px;"></li>
 </ul>
 
-<div class ="section" ng-controller="BDE_Controller">
+<% for (const asso in data) {
+  if (Object.hasOwnProperty.call(data, asso)) {
+    const listes = data[asso];%>
 
-  <div class="center sectionTitle"> BDE </div>
-  <div class="divider" id ="divide"></div>
+    <div class="section" ng-controller="BDE_Controller">
 
-  <div class="container cardsContainer ng-hide" ng-hide="BDE_cards" >
+      <div class="center sectionTitle"> <%=asso%> </div>
+      <div class="divider" id ="divide"></div>
 
-    <div class="card z-depth-4 listeCards">
-      <a ng-click="BDE_display_liste1()">
-        <div class="card-image">
-          <img src="img/listeHeros.jpg">
-        </div> 
-      </a> 
+      <div class="container cardsContainer ng-hide" ng-hide="BDE_cards" >
+
+        <% listes.forEach((liste, i) => { %>
+          <div class="card z-depth-4 listeCards">
+            <a ng-click="BDE_display_liste<%=i%>()">
+              <div class="card-image">
+                <img src="img/<%=liste.logo%>">
+              </div> 
+            </a> 
+          </div>
+        <% }); %>
+
+      </div>
+
+      <% listes.forEach((liste, i) => { %>
+        <div class="ng-hide listeDescription" ng-hide="BDE_liste<%=i%>">
+          <a ng-click="BDE_display_cards()"> <i class="material-icons">undo</i>Retour aux autres listes</a>
+            liste: <%=liste.nom%>
+          </div >
+      <% }); %>
+
     </div>
 
-    <div class="card listeCards z-depth-4 ">
-      <a ng-click="BDE_display_liste2()">
-        <div class="card-image">
-          <img src="img/ghostlisters.png">
-        </div>  
-      </a>
-    </div>
+    <script>
+      var app = angular.module("app", []);
 
-  </div>
+      app.controller('BDE_Controller', function ($scope){
 
-  <div class="ng-hide listeDescription" ng-hide="BDE_liste1">
-    <a ng-click="BDE_display_cards()"> <i class="material-icons">undo</i>Retour aux autres listes</a>
-      hello liste 1 
-  </div >
+        $scope.BDE_cards = false;
 
-  <div class="ng-hide listeDescription" ng-hide="BDE_liste2">
-    <a ng-click="BDE_display_cards()"> <i class="material-icons">undo</i>Retour aux autres listes</a>
-      hello liste 2 
-  </div >
-
-</div>
-
-<div class ="section">
-  <div class="center sectionTitle"> BDA </div>
-  <div class="divider" id ="divide"></div>
-
-  <div class="container cardsContainer" >
-
-    <div class="card z-depth-4 listeCards">
-      <div class="card-image">
-        <img src="img/listeHeros.jpg">
-      </div>  
-    </div>
-
-    <div class="card listeCards z-depth-4 ">
-      <div class="card-image">
-        <img src="img/ghostlisters.png">
-      </div>  
-    </div>
+        <% listes.forEach((liste, i) => { %>
+          $scope.BDE_liste<%=i%> = true;
+        <% }); %>
 
 
-  </div>
+        <% listes.forEach((liste, i) => { %>
 
-</div>
+          $scope.BDE_display_liste<%=i%> = () => {
+            $scope.BDE_cards = true;
 
-<script>
-  var app = angular.module("app", []);
+            <% listes.forEach((liste_1, j) => { %>
+              $scope.BDE_liste<%=j%> = true; 
+            <% }); %>
+
+            $scope.BDE_liste<%=i%> = false;
+          }
+
+        <% }); %>
 
 
-app.controller('BDE_Controller', function ($scope){
+        $scope.BDE_display_cards = () => {
+          $scope.BDE_cards = false;
 
-  $scope.BDE_cards = false;
-  $scope.BDE_liste1 = true;
-  $scope.BDE_liste2 = true;
+          <% listes.forEach((liste_1, j) => { %>
+              $scope.BDE_liste<%=j%> = true; 
+          <% }); %>
+        }
+      })
 
-  $scope.BDE_display_liste1 = () => {
+    </script>
 
-    $scope.BDE_cards = true;
-    $scope.BDE_liste1 = false;
-    $scope.BDE_liste2 = true;
-  
-  }
+  <% } %>
+<% }; %>
 
-  $scope.BDE_display_liste2 = () => {
-
-    $scope.BDE_cards = true;
-    $scope.BDE_liste1 = true;
-    $scope.BDE_liste2 = false;
-  
-  }
-
-  $scope.BDE_display_cards = () =>{
-    $scope.BDE_cards = false;
-    $scope.BDE_liste1 = true;
-    $scope.BDE_liste2 = true;
-  }
-})
-
-</script>
 </body>
 </html>

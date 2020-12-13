@@ -3,6 +3,36 @@ const bodyParser = require('body-parser');
 const http = require("http");
 const path = require('path');
 
+/*listes = {
+  bde: [ {nom: "gosthlisters", logo: "ghostlisters.jpg", pipo: false, html: "gosth.html"},
+         {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"}
+       ],
+  eclair: [ {nom: "404 dead Link", logo: "listeLink.jpg", pipo: false, html: "link.html"},
+            {nom: "Adolf Éclair", logo: "listeAdolf.jpg", pipo: true, membres: ["Deenay", "Harrah"]}
+          ]
+}*/
+
+listes = {
+  BDE: [ {nom: "gosthlisters", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
+         {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"},
+         {nom: "autre liste bde", logo: "listeHeros.jpg", pipo: false , html: "heros.html"}
+       ],
+  Éclair: [ {nom: "link", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
+            {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
+          ]
+}
+
+/*
+for (const asso in data) {
+  if (Object.hasOwnProperty.call(data, asso)) {
+    const listes = data[asso];
+
+    listes.forEach(liste => {
+      
+    });
+    
+  }
+}*/
 
 const app =	express();
 app.set('view-engine','ejs');
@@ -17,7 +47,7 @@ app.use(express.json());
 app.use(express.static(dir));
 
 app.get('/', async (req,res) => {
-    res.render("index.ejs");
+    res.render("index.ejs", {data: listes});
 });
 
 
