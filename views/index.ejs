@@ -19,14 +19,17 @@
   <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
 </head>
 <body ng-app="app">
-<nav id ="myNav" class="z-depth-0">
-  <div class="nav-wrapper container">
-    <span class="left">
-      <i class="material-icons sidenav-trigger" data-target="side-menu" style="font-size:50px;">menu</i>
-    </span>
-    <span class ="right" style = "color : #ffffff;font-weight: bold;font-size: 1.5em;"> CAMPAGNES AEECL - 2020</span>
-  </div>
-</nav>
+
+<div class="navbar-fixed">
+  <nav id ="myNav" class="z-depth-0">
+    <div class="nav-wrapper container">
+      <span class="left">
+        <i class="material-icons sidenav-trigger" data-target="side-menu" style="font-size:50px;">menu</i>
+      </span>
+      <span class ="right" style = "color : #ffffff;font-weight: bold;font-size: 1.5em;"> CAMPAGNES AEECL - 2020</span>
+    </div>
+  </nav>
+</div>
 
 <ul id="side-menu" class="sidenav side-menu">
   <% for (const asso in data) {
