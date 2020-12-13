@@ -9,7 +9,7 @@ listes = {
   bde: [ {nom: "gosthlisters", logo: "ghostlisters.png", pipo: false, html: "gosth"},
          {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros"}
        ],
-  eclair: [ {nom: "404 dead Link", logo: "listeLink.jpg", pipo: false, html: "heros"},
+  eclair: [ {nom: "404 dead Link", logo: "listeLink.jpg", pipo: false, membres: ["membre1", "membre2"]},
             {nom: "Adolf Éclair", logo: "listeAdolf.jpg", pipo: true, membres: ["Deenay", "Harrah"]}
           ]
 }

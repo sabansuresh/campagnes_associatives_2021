@@ -2,3 +2,8 @@
 
 <h1>liste: <%=liste.nom%></h1>
 <img src='img/<%=liste.logo%>' alt='logo' width='300px'>
+<ul>
+    <% liste.membres.forEach(membre => { %>
+        <li><%=membre%></li>
+    <% }); %>
+</ul>
