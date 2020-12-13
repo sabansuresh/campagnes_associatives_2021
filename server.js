@@ -13,16 +13,21 @@ const path = require('path');
 }*/
 
 listes = {
-  BDE: [ {nom: "gosthlisters", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
-         {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"},
-         {nom: "autre liste bde", logo: "listeHeros.jpg", pipo: false , html: "heros.html"}
-       ],
-  Éclair: [ {nom: "link", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
+  eclair: [ {nom: "link", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
+            {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
+            {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
+            {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
             {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
-          ]
-          ,
-  Éclair2: [ {nom: "link2", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
-            {nom: "adolf2", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
+
+          ],
+  bde: [ {nom: "gosthlisters", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
+         {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"},
+         {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros.html"},
+         {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
+  ],
+  eclair2: [ {nom: "link2", logo: "ghostlisters.png", pipo: false, html: "gosth.html"},
+            {nom: "adolf2", logo: "listeHeros.jpg", pipo: true , html: "heros.html"},
+            {nom: "adolf", logo: "listeHeros.jpg", pipo: true , html: "heros.html"}
           ]
 }
 
