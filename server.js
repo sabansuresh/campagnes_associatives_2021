@@ -6,11 +6,11 @@ const path = require('path');
 
 // Les données sur les listes
 listes = {
-  bde: [ {nom: "gosthlisters", logo: "ghostlisters.png", pipo: false, html: "gosth"},
-         {nom: "koh-lanta L'iste des héros", logo: "listeHeros.jpg", pipo: false , html: "heros"}
+  BDE: [ {nom: "gosthlisters", logo: "BDE/ghostlisters.png", pipo: false, html: "BDE/gosth"},
+         {nom: "koh-lanta L'iste des héros", logo: "BDE/listeHeros.jpg", pipo: false , html: "BDE/heros"}
        ],
-  eclair: [ {nom: "404 dead Link", logo: "listeLink.jpg", pipo: false, membres: ["membre1", "membre2"]},
-            {nom: "Adolf Éclair", logo: "listeAdolf.jpg", pipo: true, membres: ["Deenay", "Harrah"]}
+  Eclair: [ {nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false, membres: ["membre1", "membre2"]},
+            {nom: "Adolf Éclair", logo: "ECLAIR/ECLAIR.png", pipo: true, membres: ["Deenay", "Harrah"], description : "Cette liste est super sérieuse", socials : {"Instagram" : "https://i.redd.it/sx3qro1isz841.jpg", "Facebook" : "https://i.imgur.com/Mjmp84f.jpg"}}
           ]
 }
 

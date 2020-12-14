@@ -1,9 +1,33 @@
-<%# template par défaut de présentation de liste %>
+<!-- template par défaut de présentation de liste -->
+<br>
+<div class="container defaultDescription">
+    <h2 class="defaultTitle"><%=liste.nom%></h2>
 
-<h1>liste: <%=liste.nom%></h1>
-<img src='img/<%=liste.logo%>' alt='logo' width='300px'>
-<ul>
-    <% liste.membres.forEach(membre => { %>
-        <li><%=membre%></li>
-    <% }); %>
-</ul>
+    <% if (liste.description) {%>
+
+    <p class="defaultP"><i class="material-icons">view_headline</i>Description </p>
+    <div style="margin-left:50px;">  <%= liste.description%>
+     <% } %>
+
+    <% if (liste.membres) {%>
+    <p class="defaultP"><i class="material-icons">accessibility</i>Liste des membres </p>
+    <ul class="center">
+        <% liste.membres.forEach(membre => { %>
+            <li><%=membre%></li>
+        <% }); %>
+    </ul>
+    <% } %>
+    <% if (liste.programme) {%>
+    <p class="defaultP"><i class="material-icons">event</i>Programme de Mandat</p>
+         <div style="margin-left:50px;"> <%=liste.programme%></div>
+    <% }%>
+
+    <% if (liste.socials) {%>
+        <p class="defaultP"><i class="material-icons">share</i>Réseaux sociaux</p>
+        <div style="display: flex;justify-content: space-around;">
+        <% for (const [key, value] of Object.entries(liste.socials)) {%>
+            <a style="flex-wrap:wrap;" href="<%=value%>"><%=key%></a>
+        <% }%>
+        </div>
+    <% } %>
+</div>

@@ -1,9 +1,9 @@
 :root{
-    --primary: #061244;
+    --primary: #053e55;
     --secondary: #005480;
     --background : #ffffff;
   }
-
+  
   
 body{
   background-color: var(--background);
@@ -46,6 +46,7 @@ nav .sidenav-trigger{
 }
 
 
+
 #divide {
     background-color: var(--primary);
     color:var(--primary);
@@ -59,4 +60,30 @@ nav .sidenav-trigger{
     display:flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.defaultDescription{
+  font-size: 20px;
+  margin: auto;
+}
+.defaultTitle{
+  margin-top: 15px;
+  text-align: center;
+  text-decoration: underline;
+
+}
+
+.defaultP{
+  margin-top: 15px;
+  left: 15px;
+  font-weight: bold;
+  font-size: 30px;
+  text-decoration: underline;
+
+}
+
+i.material-icons {
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
 }
