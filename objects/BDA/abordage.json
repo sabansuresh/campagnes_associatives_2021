@@ -4,15 +4,21 @@
 "membres" : ["Prez : Romane Barge (Atha)",
             "SG : Sibylle Brunet (Huli)",
             "Trez : Yanis Meziani (Nahnas)",
-            "VP com : Pauline Mathiot (Skandhy) et Flore Lafon (Tihee)",
+            "VP com : Pauline Mathiot (Skandhy)",
+            "VP com :  Flore Lafon (Tihee)",
             "VP Lyon : Auxence Jiguet (Khautty)",
             "VP Clubs : Robin Gayet (Klapto)",
-            "VP Event : Blandine Grange (Byxeez), Camille Normant (Foukhy), Eglantine Anton (Khesta)"
+            "VP Event : Blandine Grange (Byxeez)",
+            "VP Event : Camille Normant (Foukhy)",
+            "VP Event : Eglantine Anton (Khesta)"
 ],
 "logo":"/BDA/logo.png",
+"description" : "Mille sartbords, que vois-je ! Dix pirartes à l’allure fière qui s’apprêtent à parcourir la moitié du globe pour ramener, contre vents et mart’ées, l’art à Centrale. Part’és pour l’aventure. et plus que motivés pour vous faire kiffer pendant ces campagnes et vous art’ranger des évènements bien qualis tout au long de l’année, ils débart’quent sur le campus. Art’més jusqu’aux dents face au Covid et nombreuses annulastr.qui montent la gart’de, ils ont plus d’un tour dans leur sac pour ramener l’art à la maison et partager avec vous leurs passions. Que vous maîtrisiez tout le jart’gon ou soyez totalement inculte, que vous soyez un fêtart’d du dimanche ou un adepte de la STR, un artiviste assumé ou un réfrart’ctaire, habitué des musés et salles de théâtre, lecteur, musicien, amateur de dessin ou rien de tout cela, vous allez les art’dorer. A l’abord’art moussaillon, on va secouer Centrale Lyon !",
 "socials" : {
 "Facebook" : "https://www.facebook.com/A-labordart-101786721806542/",
 "Instagram" : "https://www.instagram.com/a_l_abord_art/"
 }
 
 }
+ 
+

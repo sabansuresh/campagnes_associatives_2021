@@ -1,0 +1,27 @@
+{
+
+    "nom" : "Les sPAOtionautes",
+    "membres" : ["Allan Belhabchi (Thoru)",
+                "Denis Bakhoum (Khréöh)",
+                "Taïga Goncalves (Mouhloks)",
+                "Marie Josserand (Rehddy)",
+                "Pierre Komitau (Vahly)",
+                "Nanto Ralibera (Wihks)",
+                "Louise Wittmann (Maha)",
+                "Lu Zhang (Stalhy)"
+    ],   
+    "logo":"/PAO/spationautes.png",
+    "description" : "Bienvenue sur le programme spatial des sPAOtionautes. Notre équipe a pour mission de faire avancer la conquête spatiale en fournissant des affiches de qualité et des logos à toute l'école. Notre devise : un petit PAO pour l'homme, un bon de géant pour l'humanité.",
+    "socials" : {
+    "Facebook" : "https://www.facebook.com/Les-spaotionautes-105808831397599"
+    },
+    "programmeList" :["Réalisation des plaquettes de Centrale : nous allons faire la plaquette Alpha et la plaquette Oméga, ainsi que la plaquette Challenge si celui-ci a lieu.",
+        "Commandes de logos et d’affiches : nous allons essayer de répondre durant notre mandat à un maximum de commandes d’affiches et de logos pour les différents assos et clubs de Centrale.",
+        "Logo d’étage : on voudrait s’assurer que chaque étage des résidences possède un logo d’étage afin de le représenter.",
+        "Package LaTeX PAO : on aimerait faire en sorte que le package LaTeX PAO soit mieux diffusé aux Centraliens. Cela permettrait, en plus de faciliter l’accès à LaTeX, d’avoir plus de retour sur le package dans le but de l’améliorer.",
+        "Jeu de plateau : on voudrait créer un jeu de plateau sur le thème de Centrale, pourquoi pas sous la forme d’un trivial poursuite ou même d’un Monopoly un peu revisité."
+    ]
+    }
+     
+    
+    

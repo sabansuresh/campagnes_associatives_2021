@@ -7,7 +7,7 @@
   <title>CAMPAGNES AEECL 2020</title>
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="mystyle.css">
+  <link rel="stylesheet" href="css/mystyle.css">
   <link rel="icon" href="img/icon.png" />
    <!-- Materialize compiled and minified CSS -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -22,11 +22,14 @@
 <!-- navbar fixe en haut de l'écran-->
 <div class="navbar-fixed">
   <nav id ="myNav" class="z-depth-0">
-    <div class="nav-wrapper container">
-      <span class="left">
-        <i class="material-icons sidenav-trigger" data-target="side-menu" style="font-size:50px;">menu</i>
+    <div class="nav-wrapper">
+      <span style="position: absolute;left:0px;top:0px">
+        <i class="material-icons sidenav-trigger" data-target="side-menu" style="font-size:2em;">menu</i>
       </span>
-      <span class ="right" style = "color : #ffffff;font-weight: bold;font-size: 1.5em; right:0; position: absolute;">CAMPAGNES AEECL</span>
+      <span  style="position: absolute;left:40px;top:0px"><a href="/login"><i class="material-icons sidenav-trigger" style="font-size:2em;">lock</i></a></span>
+      <span style = "position: absolute;top:0px;right:50px;color : #ffffff;font-weight: bold;font-size: 1.5em;">CAMPAGNES AEECL</span>
+
+      
     </div>
   </nav>
 </div>
@@ -70,7 +73,7 @@
           </div>
 
       </div>
-
+    </div>
     <% } %>
 
     <% if (asso !="ECLAIR") { %>
@@ -81,7 +84,6 @@
       <div class="divider" id ="divide"></div>
 
       <div class="container cardsContainer ng-hide" ng-hide="<%=asso%>_cards" >
-
         <!--  Une carte cliquable par liste avec le logo-->
         <% listes.forEach((liste, i) => { %>
           <div class="card z-depth-4 listeCards">
@@ -102,7 +104,7 @@
           <% if (liste.html) { %>
             <%- include('presentations/'+liste.html, {liste: liste}); %>
           <% } else { %>
-            <%- include('default.ejs', {liste: liste}); %>
+            <%- include('presentations/default.ejs', {liste: liste}); %>
           <% } %>
           </div >
       <% }); %>

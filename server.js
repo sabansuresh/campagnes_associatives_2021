@@ -6,7 +6,8 @@ const path = require('path');
 
 // Les données sur les listes
 
-const abordage = require('./objects/BDA/abordage.json')
+const abordage = require('./objects/BDA/abordage.json');
+const spationautes = require('./objects/PAO/spationautes.json');
 
 listes = {
   BDE: [ {nom: "gosthlisters", logo: "BDE/ghostlisters.png", pipo: false, html: "BDE/gosth"},
@@ -14,7 +15,8 @@ listes = {
        ],
   ECLAIR: [ {nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false, html: "ECLAIR/404"}
           ],
-  BDA : [abordage]
+  BDA : [abordage],
+  PAO : [spationautes]
 }
 
 
@@ -44,6 +46,10 @@ app.use(express.static(dir));
 
 app.get('/', async (req,res) => {
     res.render("index.ejs", {data: listes}); // générer la page et la renvoyer
+});
+
+app.get('/login', async (req,res) => {
+  res.render("login.ejs"); // générer la page et la renvoyer
 });
 
 

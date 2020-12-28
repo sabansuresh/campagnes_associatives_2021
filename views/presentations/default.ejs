@@ -6,17 +6,32 @@
     <% if (liste.description) {%>
 
     <p class="defaultP"><i class="material-icons">view_headline</i>Description </p>
-    <div style="margin-left:50px;">  <%= liste.description%>
+    <div style="margin-left:50px;">  <%= liste.description%> </div>
      <% } %>
 
     <% if (liste.membres) {%>
     <p class="defaultP"><i class="material-icons">accessibility</i>Liste des membres </p>
-    <ul class="center">
+    <div style="max-width: 500px;margin: auto;">
+    <ul style="text-align: left;">
         <% liste.membres.forEach(membre => { %>
-            <li><%=membre%></li>
+            <li>• <%=membre%></li>
         <% }); %>
     </ul>
+    </div>
     <% } %>
+
+    <% if (liste.programmeList) {%>
+        <p class="defaultP"><i class="material-icons">event</i>Programme de Mandat</p>
+        <div style="max-width: 1000px;margin: auto;">
+        <ul style="text-align: left;">
+            <% liste.programmeList.forEach(idee => { %>
+                <li>• <%=idee%></li>
+                <br>
+            <% }); %>
+        </ul>
+        </div>
+     <% } %>
+
     <% if (liste.programme) {%>
     <p class="defaultP"><i class="material-icons">event</i>Programme de Mandat</p>
          <div style="margin-left:50px;"> <%=liste.programme%></div>
