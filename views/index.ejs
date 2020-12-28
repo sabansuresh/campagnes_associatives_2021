@@ -51,6 +51,30 @@
   if (Object.hasOwnProperty.call(data, asso)) {
     const listes = data[asso]; %>
 
+    <% if (asso =="ECLAIR") {%>
+      
+    <div id="<%=asso%>" class="section"> <!--  controller angular défini dans le script plus bas-->
+
+      <div class="center sectionTitle"> <%=asso%> </div> <!--  nom de l'asso-->
+      <div class="divider" id ="divide"></div>
+
+      <div class="container cardsContainer" >
+
+        <!--  Une carte cliquable par liste avec le logo-->
+          <div class="card z-depth-4 listeCards">
+            <a href="/DeadLink">
+              <div class="card-image">
+                <img src="img/ECLAIR/DeadLink.png">
+              </div> 
+            </a> 
+          </div>
+
+      </div>
+
+    <% } %>
+
+    <% if (asso !="ECLAIR") { %>
+
     <div id="<%=asso%>" class="section" ng-controller="<%=asso%>_Controller"> <!--  controller angular défini dans le script plus bas-->
 
       <div class="center sectionTitle"> <%=asso%> </div> <!--  nom de l'asso-->
@@ -125,7 +149,7 @@
       })
 
     </script>
-
+  <% } %>
   <% } %>
 <% }; %>
 
