@@ -10,13 +10,13 @@ const abordage = require('./objects/BDA/abordage.json');
 const spationautes = require('./objects/PAO/spationautes.json');
 
 listes = {
-  BDE: [ {nom: "gosthlisters", logo: "BDE/ghostlisters.png", pipo: false, html: "BDE/gosth"},
-         {nom: "koh-lanta L'iste des héros", logo: "BDE/listeHeros.jpg", pipo: false , html: "BDE/heros"}
-       ],
-  ECLAIR: [ {nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false, html: "ECLAIR/404"}
-          ],
-  BDA : [abordage],
-  PAO : [spationautes]
+  BDE: [{ nom: "gosthlisters", logo: "BDE/ghostlisters.png", pipo: false, html: "BDE/gosth" },
+  { nom: "koh-lanta L'iste des héros", logo: "BDE/listeHeros.jpg", pipo: false, html: "BDE/heros" }
+  ],
+  ECLAIR: [{ nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false, html: "ECLAIR/404" }
+  ],
+  BDA: [abordage],
+  PAO: [spationautes]
 }
 
 
@@ -32,8 +32,8 @@ for (const asso in data) {
   }
 }*/
 
-const app =	express();
-app.set('view-engine','ejs');
+const app = express();
+app.set('view-engine', 'ejs');
 
 var dir = path.join(__dirname);
 
@@ -44,27 +44,34 @@ app.use(express.json());
 
 app.use(express.static(dir));
 
-app.get('/', async (req,res) => {
-    res.render("index.ejs", {data: listes}); // générer la page et la renvoyer
+app.get('/', async (req, res) => {
+  res.render("index.ejs", { data: listes }); // générer la page et la renvoyer
 });
 
-app.get('/login', async (req,res) => {
+app.get('/login', async (req, res) => {
   res.render("login.ejs"); // générer la page et la renvoyer
 });
 
-
-app.get('/DeadLink', async (req,res) => {
-  res.render("presentations/ECLAIR/404.ejs", {data: listes}); // générer la page et la renvoyer
+app.get('/DeadLink', async (req, res) => {
+  res.render("presentations/ECLAIR/404.ejs", { data: listes }); // générer la page et la renvoyer
 });
 
-app.get('*', function(req, res){
-	res.redirect('/') // rediriger toutes les pages sur la page principale
-  });
+app.get('/vote', async (req, res) => {
+  res.render("vote.ejs", { data: listes }); // générer la page et la renvoyer
+});
+
+app.post('/vote_post', async (req, res) => {
+  res.send(req.body);
+})
+
+app.get('*', function (req, res) {
+  res.redirect('/') // rediriger toutes les pages sur la page principale
+});
 
 var server = http.createServer(app);
 
-server.listen(process.env.PORT || 8080,() => {
-	console.log(`App Started on PORT ${process.env.PORT || 8080}`);
+server.listen(process.env.PORT || 8080, () => {
+  console.log(`App Started on PORT ${process.env.PORT || 8080}`);
 });
 
 

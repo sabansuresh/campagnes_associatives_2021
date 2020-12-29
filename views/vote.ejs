@@ -1,0 +1,82 @@
+<!-- https://gist.github.com/rcotrina94/7828886 -->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Vote - CAMPAGNES AEECL 2020</title>
+    <link rel="stylesheet" href="css/vote.css">
+</head>
+
+<body>
+
+    <!--<form class="" action="/next" id="next" method="post">
+
+        <p id="question_par"></p>
+        <div class="" id="answers_buttons"></div>
+
+        <% for (const asso in data) { if (Object.hasOwnProperty.call(data, asso)) { const listes=data[asso]; %>
+
+            <h2>
+                <%=asso%>
+            </h2>
+
+            <%listes.forEach((liste, i)=> {%>
+                <input type="radio" id="<%=i%>" name="<%=asso%>" value="<%=i%>">
+                <label for="<%=i%>">
+                    <%=liste.nom%>
+                </label><br>
+                <%}); %>
+
+                    <select name="<%=asso%>" id="<%=asso%>">
+                        <%listes.forEach((liste, i)=> {%>
+                            <option value="<%=i%>">
+                                <%=liste.nom%>
+                            </option>
+                            <%}); %>
+                    </select>
+
+                    <div class="cc-selector">
+
+                        <%listes.forEach((liste, i)=> {%>
+                            <input id="<%=i%>_<%=asso%>" type="radio" name="<%=asso%>" value="<%=i%>_<%=asso%>" />
+                            <label class="drinkcard-cc visa" for="<%=i%>_<%=asso%>"
+                                style="background-image:url(/img/<%=liste.logo%>);"></label>
+                            <%}); %>
+
+                    </div>
+
+                    <%} }%>
+
+    </form>-->
+
+
+    <form action="/vote_post" method="post">
+
+        <% for (const asso in data) { if (Object.hasOwnProperty.call(data, asso)) { const listes=data[asso]; %>
+
+            <h2>
+                <%=asso%>
+            </h2>
+
+            <div class="cc-selector">
+
+                <%listes.forEach((liste, i) => {%>
+                    <input id="<%=i%>_<%=asso%>" type="radio" name="<%=asso%>" value="<%=i%>" />
+                    <label class="drinkcard-cc" for="<%=i%>_<%=asso%>"
+                        style="background-image:url(/img/<%=liste.logo%>);"></label>
+                    <%}); %>
+
+            </div>
+
+            <%} }%>
+
+                <button type="submit">À voter</button>
+    </form>
+
+    </div>
+
+</body>
+
+</html>
