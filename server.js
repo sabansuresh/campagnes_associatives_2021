@@ -11,9 +11,11 @@ const spationautes = require('./objects/PAO/spationautes.json');
 
 listes = {
   BDE: [{ nom: "gosthlisters", logo: "BDE/ghostlisters.png", pipo: false, html: "BDE/gosth" },
-  { nom: "koh-lanta L'iste des héros", logo: "BDE/listeHeros.jpg", pipo: false, html: "BDE/heros" }
+  { nom: "koh-lanta L'iste des héros", logo: "BDE/listeHeros.jpg", pipo: false, html: "BDE/heros" },
+  {nom: "pipo bde", logo: "icon.png", pipo: true}
   ],
-  ECLAIR: [{ nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false, html: "ECLAIR/404" }
+  Éclair: [{ nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false, html: "ECLAIR/404" },
+  {nom: "pipo Éclair", logo: "icon.png", pipo: true}
   ],
   BDA: [abordage],
   PAO: [spationautes]
