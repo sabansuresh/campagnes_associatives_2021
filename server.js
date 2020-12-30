@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const http = require("http");
 const path = require('path');
-
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database('memory');
 
 // Les données sur les listes
 
@@ -12,10 +13,10 @@ const spationautes = require('./objects/PAO/spationautes.json');
 listes = {
   BDE: [{ nom: "gosthlisters", logo: "BDE/ghostlisters.png", pipo: false, html: "BDE/gosth" },
   { nom: "koh-lanta L'iste des héros", logo: "BDE/listeHeros.jpg", pipo: false, html: "BDE/heros" },
-  {nom: "pipo bde", logo: "icon.png", pipo: true}
+  { nom: "pipo bde", logo: "icon.png", pipo: true }
   ],
-  Éclair: [{ nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false, html: "ECLAIR/404" },
-  {nom: "pipo Éclair", logo: "icon.png", pipo: true}
+  ECLAIR: [{ nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false, html: "ECLAIR/404" },
+  { nom: "pipo Éclair", logo: "icon.png", pipo: true }
   ],
   BDA: [abordage],
   PAO: [spationautes]
@@ -46,6 +47,38 @@ app.use(express.json());
 
 app.use(express.static(dir));
 
+
+// bdd
+createdb = function () {
+  db.serialize(function () {
+    db.run("CREATE TABLE assos (id  INTEGER PRIMARY KEY AUTOINCREMENT  , nom VARCHAR(100), listes TEXT)");
+
+    var stm = db.prepare("INSERT INTO assos (nom, listes) VALUES (?, ?) ");
+
+    for (const asso in listes) {
+      if (Object.hasOwnProperty.call(listes, asso)) {
+        const listes_ = listes[asso];
+        obj = [];
+        listes_.forEach(liste => {
+          obj.push({
+            liste: liste.nom,
+            votes: 0
+          });
+        });
+        stm.run(asso, JSON.stringify(obj));
+
+      }
+    }
+
+    stm.finalize();
+
+    db.each("SELECT * FROM assos", function (err, row) {
+      console.log(row);
+    });
+  });
+};
+//createdb();
+
 app.get('/', async (req, res) => {
   res.render("index.ejs", { data: listes }); // générer la page et la renvoyer
 });
@@ -63,7 +96,44 @@ app.get('/vote', async (req, res) => {
 });
 
 app.post('/vote_post', async (req, res) => {
-  res.send(req.body);
+
+  console.log(req.body);
+
+  db.each("SELECT nom AS asso, listes FROM assos", function (err, row) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      console.log(row);
+      l = JSON.parse(row.listes);
+      console.log("\nl:\n");
+      console.log(l);
+      console.log(row.asso);
+
+      if (req.body[row.asso] && req.body[row.asso] != "blanc" && Object.hasOwnProperty.call(l, req.body[row.asso])) {
+
+        console.log(req.body[row.asso]);
+        l[req.body[row.asso]].votes += 1;
+        console.log(l[req.body[row.asso]]);
+
+        var update = db.prepare("UPDATE assos SET listes=? WHERE nom=? ");
+
+        update.run(JSON.stringify(l), row.asso);
+
+        update.finalize();
+
+        console.log("\ndb:\n");
+
+        db.each("SELECT * FROM assos", function (err, row) {
+          console.log(row);
+        });
+
+      }
+      // res.send(req.body);      
+    }
+
+  });
+
 })
 
 app.get('*', function (req, res) {
@@ -75,9 +145,5 @@ var server = http.createServer(app);
 server.listen(process.env.PORT || 8080, () => {
   console.log(`App Started on PORT ${process.env.PORT || 8080}`);
 });
-
-
-
-
 
 
