@@ -42,8 +42,6 @@
         <p id="question_par"></p>
         <div class="" id="answers_buttons"></div>
 
-        
-
         <% for (const asso in data) { if (Object.hasOwnProperty.call(data, asso)) { const listes=data[asso]; %>
 
             <h2>
@@ -79,18 +77,15 @@
 
     </form>-->
 
-
     <div class="center">
         <h2>Liste de votes</h2>
         <h4>Il est obligatoire de choisir un scrutin pour chacun des votes proposés. Une fois ton vote soumis, tu ne
             pourras plus le modifier.</h4>
     </div>
 
-
     <form class="center" action="/vote_post" method="post">
 
         <% for (const asso in data) { if (Object.hasOwnProperty.call(data, asso)) { const listes=data[asso]; %>
-
 
             <div class="cc-selector">
                 <h5 class="">
@@ -121,7 +116,6 @@
     </form>
 
     </div>
-
 
     <script src="js/vote.js"></script>
 
