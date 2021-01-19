@@ -100,7 +100,7 @@
                             src="/img/<%=liste.logo%>" alt="" width="100px"></label>
                     <%}); %>
 
-                        <input id="blanc_<%=asso%>" type="radio" name="<%=asso%>" value="blanc" checked />
+                        <input id="blanc_<%=asso%>" type="radio" name="<%=asso%>" value="<%=listes.length%>" checked />
                         <label class="drinkcard-cc tooltipped z-depth-5" for="blanc_<%=asso%>" data-tooltip="vote blanc"
                             style="box-shadow: 10px 10px 5px blue;"><img src="/img/vote_blanc.png" alt="Vote blanc"
                                 width="100px"></label>
@@ -108,6 +108,8 @@
             </div>
 
             <%} }%>
+
+            <input type="text" name="user_id" id="user_id" value="hmenard"> <label for="user_id">user_id</label>
 
                 <button class="waves-effect waves-light btn-large" type="submit" name="action" id="submit_vote"
                     onclick="M.toast({html: 'vote envoyé'})"> À voter

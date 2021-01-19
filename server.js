@@ -4,6 +4,7 @@ const http = require("http");
 const path = require('path');
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('memory');
+var xss = require('xss');
 
 // Les données sur les listes
 
@@ -65,6 +66,10 @@ createdb = function () {
             votes: 0
           });
         });
+        obj.push({
+          liste: 'blanc',
+          votes: 0
+        });
         stm.run(asso, JSON.stringify(obj));
 
       }
@@ -98,6 +103,9 @@ app.get('/vote', async (req, res) => {
 app.post('/vote_post', async (req, res) => {
 
   console.log(req.body);
+ // var user_id='hmenard';
+  var user_id=xss(req.body.user_id);
+
 
   db.each("SELECT nom AS asso, listes FROM assos", function (err, row) {
     if (err) {
@@ -110,7 +118,7 @@ app.post('/vote_post', async (req, res) => {
       console.log(l);
       console.log(row.asso);
 
-      if (req.body[row.asso] && req.body[row.asso] != "blanc" && Object.hasOwnProperty.call(l, req.body[row.asso])) {
+      if (req.body[row.asso] && Object.hasOwnProperty.call(l, req.body[row.asso])) {
 
         console.log(req.body[row.asso]);
         l[req.body[row.asso]].votes += 1;
@@ -123,6 +131,13 @@ app.post('/vote_post', async (req, res) => {
         update.finalize();
 
         console.log("\ndb:\n");
+
+        var add_has_voted = db.prepare("update adherents set voted=true where id=?;");
+
+        add_has_voted.run(user_id);
+
+        add_has_voted.finalize();
+
 
         db.each("SELECT * FROM assos", function (err, row) {
           console.log(row);
