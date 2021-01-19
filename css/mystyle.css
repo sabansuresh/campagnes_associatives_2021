@@ -87,3 +87,7 @@ i.material-icons {
   position: relative;
   top: -1px;
 }
+
+a {
+  cursor: pointer;
+}
