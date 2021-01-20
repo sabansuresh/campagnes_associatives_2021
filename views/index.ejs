@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -9,10 +10,11 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="css/mystyle.css">
   <link rel="icon" href="img/icon.png" />
-   <!-- Materialize compiled and minified CSS -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Materialize compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="js/Chart.min.js"></script>
   <script type="module" src="/js/app.js"></script>
   <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png">
   <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
@@ -20,140 +22,171 @@
 
 <body ng-app="app">
 
-<!-- navbar fixe en haut de l'écran-->
-<div class="navbar-fixed">
-  <nav id ="myNav" class="z-depth-0">
-    <div class="nav-wrapper">
-      <span style="position: absolute;left:0px;top:0px">
-        <i class="material-icons sidenav-trigger" data-target="side-menu" style="font-size:2em;">menu</i>
-      </span>
-      <span  style="position: absolute;left:40px;top:0px"><a href="/login"><i class="material-icons sidenav-trigger" style="font-size:2em;">lock</i></a></span>
-      <a style = "position: absolute;top:0px;right:50px;color : #ffffff;font-weight: bold;font-size: 1.5em;" href="#">CAMPAGNES AEECL</a>
+  <!-- navbar fixe en haut de l'écran-->
+  <div class="navbar-fixed">
+    <nav id="myNav" class="z-depth-0">
+      <div class="nav-wrapper">
+        <span style="position: absolute;left:0px;top:0px" id="menu_icon_navbar">
+          <i class="material-icons sidenav-trigger" data-target="side-menu" style="font-size:2em;">menu</i>
+        </span>
+        <span style="position: absolute;left:40px;top:0px"><a href="/login"><i class="material-icons sidenav-trigger"
+              style="font-size:2em;">lock</i></a></span>
+        <a style="position: absolute;top:0px;right:50px;color : #ffffff;font-weight: bold;font-size: 1.5em;"
+          href="#">CAMPAGNES AEECL</a>
 
-    </div>
-  </nav>
-</div>
+      </div>
+    </nav>
+  </div>
 
-<ul id="side-menu" class="sidenav side-menu">
-  <!-- Une entrée dans la sidebar par asso qui permet de scroll jusqu'à cette asso-->
-  <% for (const asso in data) {
-    if (Object.hasOwnProperty.call(data, asso)) { %>
-    <li style="margin-top: 5px;"></li>
-    <li id ="sidemenu_tag"><a  class="waves-effect" href="#<%=asso%>" ><%=asso%></a></li>
+  <ul id="side-menu" class="sidenav side-menu">
+    <!-- Une entrée dans la sidebar par asso qui permet de scroll jusqu'à cette asso-->
+    <% for (const asso in data) { 
+      if (Object.hasOwnProperty.call(data, asso)) { %>
+      <li style="margin-top: 5px;"></li>
+      <li id="sidemenu_tag"><a class="waves-effect" href="#<%=asso%>">
+          <%=asso%>
+        </a></li>
+      <% } %>
     <% } %>
-  <% } %>
-  <li style="margin-top: 5px;"></li>
-</ul>
+    <li style="margin-top: 5px;"></li>
+  </ul>
 
-<script>
-  var app = angular.module("app", []);
-</script>
+  <script>
+    var app = angular.module("app", []);
+  </script>
 
-<!--  Pour chaque asso: -->
-<% for (const asso in data) {
-  if (Object.hasOwnProperty.call(data, asso)) {
-    const listes = data[asso]; %>
 
-    <% if (asso =="ECLAIR") {%>
-      
-    <div id="<%=asso%>" class="section"> <!--  controller angular défini dans le script plus bas-->
 
-      <div class="center sectionTitle"> <%=asso%> </div> <!--  nom de l'asso-->
-      <div class="divider" id ="divide"></div>
+<canvas id="chartdiv" width="100" height="100"></canvas>
+  <!--  Pour chaque asso: -->
+  <% for (const asso in data) { if (Object.hasOwnProperty.call(data, asso)) { const listes=data[asso]; %>
 
-      <div class="container cardsContainer" >
+    <% if (asso=="ECLAIR" ) {%>
 
-        <!--  Une carte cliquable par liste avec le logo-->
+      <div id="<%=asso%>" class="section">
+        <!--  controller angular défini dans le script plus bas-->
+
+        <div class="center sectionTitle">
+          <%=asso%>
+        </div> <!--  nom de l'asso-->
+        <div class="divider" id="divide"></div>
+
+        <div class="container cardsContainer">
+
+          <!--  Une carte cliquable par liste avec le logo-->
           <div class="card z-depth-4 listeCards">
             <a href="/DeadLink">
               <div class="card-image">
                 <img src="img/ECLAIR/DeadLink.png">
-              </div> 
-            </a> 
+              </div>
+            </a>
           </div>
 
+        </div>
       </div>
-    </div>
-    <% } %>
+      <% } %>
 
-    <% if (asso !="ECLAIR") { %>
+        <% if (asso !="ECLAIR" ) { %>
 
-    <div id="<%=asso%>" class="section" ng-controller="<%=asso%>_Controller"> <!--  controller angular défini dans le script plus bas-->
+          <div id="<%=asso%>" class="section" ng-controller="<%=asso%>_Controller">
+            <!--  controller angular défini dans le script plus bas-->
 
-      <div class="center sectionTitle"> <%=asso%> </div> <!--  nom de l'asso-->
-      <div class="divider" id ="divide"></div>
+            <div class="center sectionTitle">
+              <%=asso%>
+            </div> <!--  nom de l'asso-->
+            <div class="divider" id="divide"></div>
 
-      <div class="container cardsContainer ng-hide" ng-hide="<%=asso%>_cards" >
-        <!--  Une carte cliquable par liste avec le logo-->
-        <% listes.forEach((liste, i) => { %>
-          <div class="card z-depth-4 listeCards" style="<%= liste.pipo ? 'box-shadow: 10px 10px 5px red;' : 'box-shadow: 10px 10px 5px green;'%>">
-            <a ng-click="<%=asso%>_display_liste<%=i%>()">
-              <div class="card-image">
-                <img src="img/<%=liste.logo%>">
-              </div> 
-            </a> 
-          </div>
-        <% }); %>
+            <div class="container cardsContainer ng-hide" ng-hide="<%=asso%>_cards">
+              <!--  Une carte cliquable par liste avec le logo-->
+              <% listes.forEach((liste, i)=> { %>
+                <div class="card z-depth-4 listeCards"
+                  style="<%= liste.pipo ? 'box-shadow: 10px 10px 5px red;' : 'box-shadow: 10px 10px 5px green;'%>">
+                  <a ng-click="<%=asso%>_display_liste<%=i%>()">
+                    <div class="card-image">
+                      <img src="img/<%=liste.logo%>">
+                    </div>
+                  </a>
+                </div>
+                <% }); %>
 
-      </div>
+            </div>
 
-      <% listes.forEach((liste, i) => { %>
-        <div class="ng-hide listeDescription" ng-hide="<%=asso%>_liste<%=i%>">
-          <a ng-click="<%=asso%>_display_cards()" class="right"> <i class="material-icons" style="font-size: 50px;color:red;">clear</i></a>
-          <!--  Si la liste a une page de présentation on l'affiche, sinon on génére le template par défaut avec les infos de la liste -->
-          <% if (liste.html) { %>
-            <%- include('presentations/'+liste.html, {liste: liste}); %>
-          <% } else { %>
-            <%- include('presentations/default.ejs', {liste: liste}); %>
-          <% } %>
-          </div >
-      <% }); %>
-
-    </div>
-
-    <script>
-      //var app = angular.module("app", []);
-
-      app.controller('<%=asso%>_Controller', function ($scope) {
-
-        /* Au début on affiche les cartes représentant chaque liste
-        false et true correspondent à la valeur de la propriété ng-hide
-        donc false=visible*/
-        $scope.<%=asso%>_cards = false;
-
-        <% listes.forEach((liste, i) => { %>
-          $scope.<%=asso%>_liste<%=i%> = true;
-        <% }); %>
-
-        /*Les fonctions qui gérent le clique sur une carte pour afficher la description correspondante*/
-        <% listes.forEach((liste, i) => { %>
-
-          $scope.<%=asso%>_display_liste<%=i%> = () => {
-            $scope.<%=asso%>_cards = true;
-
-            <% listes.forEach((liste_1, j) => { %>
-              $scope.<%=asso%>_liste<%=j%> = true; 
+            <% listes.forEach((liste, i)=> { %>
+              <div class="ng-hide listeDescription" ng-hide="<%=asso%>_liste<%=i%>">
+                <a ng-click="<%=asso%>_display_cards()" class="right"> <i class="material-icons"
+                    style="font-size: 50px;color:red;">clear</i></a>
+                <!--  Si la liste a une page de présentation on l'affiche, sinon on génére le template par défaut avec les infos de la liste -->
+                <% if (liste.html) { %>
+                  <%- include('presentations/'+liste.html, {liste: liste}); %>
+                <% } else { %>
+                  <%- include('presentations/default.ejs', {liste: liste}); %>
+                <% } %>
+              </div>
             <% }); %>
 
-            $scope.<%=asso%>_liste<%=i%> = false;
-          }
+          </div>
 
-        <% }); %>
+          <script>
+            //var app = angular.module("app", []);
 
-        /* La fonction pour remettre toutes les cartes quand on clique sur retour*/
-        $scope.<%=asso%>_display_cards = () => {
-          $scope.<%=asso%>_cards = false;
+            app.controller('<%=asso%>_Controller', function ($scope) {
 
-          <% listes.forEach((liste_1, j) => { %>
-              $scope.<%=asso%>_liste<%=j%> = true; 
-          <% }); %>
-        }
-      })
+              /* Au début on affiche les cartes représentant chaque liste
+              false et true correspondent à la valeur de la propriété ng-hide
+              donc false=visible*/
+              $scope.<%=asso %>_cards = false;
 
-    </script>
-  <% } %>
+              <% listes.forEach((liste, i) => { %>
+                      $scope.<%=asso %>_liste<%=i %> = true;
+              <% }); %>
+
+              /*Les fonctions qui gérent le clique sur une carte pour afficher la description correspondante*/
+              <% listes.forEach((liste, i) => { %>
+
+                $scope.<%=asso %>_display_liste<%=i %> = () => {
+                    $scope.<%=asso %>_cards = true;
+
+                  <% listes.forEach((liste_1, j) => { %>
+                    $scope.<%=asso %>_liste<%=j %> = true; 
+                  <% }); %>
+
+                  $scope.<%=asso %>_liste<%=i %> = false;
+                }
+
+              <% }); %>
+
+              /* La fonction pour remettre toutes les cartes quand on clique sur retour*/
+              $scope.<%=asso %>_display_cards = () => {
+                $scope.<%=asso %>_cards = false;
+
+                <% listes.forEach((liste_1, j) => { %>
+                  $scope.<%=asso %>_liste<%=j %> = true; 
+                <% }); %>
+                console.log('$scope.'+<%=asso%>+'_display_cards()');
+              }
+
+      
+            })
+
+            document.addEventListener('keydown', function (event) {
+              //event.preventDefault();
+              if (event.key === 'Escape') {
+                console.log('escape');
+                <%=asso%>_display_cards();
+                $scope.<%=asso%>_cards = false;
+
+                <% listes.forEach((liste_1, j) => { %>
+                    $scope.<%=asso %>_liste<%=j %> = true; 
+                <% }); %>
+              }
+
+            });
+
+          </script>
+    <% } %>
   <% } %>
 <% }; %>
 
 </body>
+
 </html>

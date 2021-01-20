@@ -100,11 +100,27 @@ app.get('/vote', async (req, res) => {
   res.render("vote.ejs", { data: listes }); // générer la page et la renvoyer
 });
 
+app.get('/results_data', async (req, res) => {
+  results = [];
+  db.all("SELECT * from assos", (err, results) => {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      res.json(results); // renvoyer les résultats au format json
+    }
+  })
+})
+
+app.get('/results', async (req, res) => {
+  res.render("results.ejs", { listes: listes }); // générer la page et la renvoyer
+});
+
 app.post('/vote_post', async (req, res) => {
 
   console.log(req.body);
- // var user_id='hmenard';
-  var user_id=xss(req.body.user_id);
+  // var user_id='hmenard';
+  var user_id = xss(req.body.user_id);
 
 
   db.each("SELECT nom AS asso, listes FROM assos", function (err, row) {

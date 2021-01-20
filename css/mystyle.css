@@ -88,6 +88,6 @@ i.material-icons {
   top: -1px;
 }
 
-a {
+a, #menu_icon_navbar {
   cursor: pointer;
 }
