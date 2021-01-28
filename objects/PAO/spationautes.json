@@ -1,6 +1,7 @@
 {
 
     "nom" : "Les sPAOtionautes",
+    "standalone": false,
     "membres" : ["Allan Belhabchi (Thoru)",
                 "Denis Bakhoum (Khréöh)",
                 "Taïga Goncalves (Mouhloks)",

@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const http = require("http");
 const path = require('path');
-var sqlite3 = require('sqlite3').verbose();
+var sqlite3 = require('sqlite3');
 var db = new sqlite3.Database('memory');
 var xss = require('xss');
 
@@ -10,17 +10,23 @@ var xss = require('xss');
 
 const abordage = require('./objects/BDA/abordage.json');
 const spationautes = require('./objects/PAO/spationautes.json');
+const weistern = require('./objects/WEI/weistern.json');
+const sdec = require('./objects/SDEC/sdexter.json');
+const birates = require('./objects/BI/Birate.json');
 
 listes = {
-  BDE: [{ nom: "gosthlisters", logo: "BDE/ghostlisters.png", pipo: false, html: "BDE/gosth" },
-  { nom: "koh-lanta L'iste des héros", logo: "BDE/listeHeros.jpg", pipo: false, html: "BDE/heros" },
+  BDE: [{ nom: "gosthlisters", logo: "BDE/ghostlisters.png", pipo: false, standalone: true, link:"ghostlisters"},
+  { nom: "koh-lanta L'iste des héros", logo: "BDE/listeHeros.jpg", pipo: false, html: "BDE/heros" ,standalone: false  },
   { nom: "pipo bde", logo: "icon.png", pipo: true }
   ],
-  ECLAIR: [{ nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false, html: "ECLAIR/404" },
-  { nom: "pipo Éclair", logo: "icon.png", pipo: true }
+  ECLAIR: [{ nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false , standalone: true, link:"deadlink"},
+  { nom: "pipo Éclair", logo: "icon.png", pipo: true, standalone: false}
   ],
   BDA: [abordage],
-  PAO: [spationautes]
+  PAO: [spationautes],
+  WEI: [weistern,{nom:"Peaky WEI'nders", logo :"WEI/peaky.png" , pipo:false, standalone:true,link:"peaky"}],
+  SDeC: [sdec],
+  BI: [birates]
 }
 
 
@@ -92,8 +98,16 @@ app.get('/login', async (req, res) => {
   res.render("login.ejs"); // générer la page et la renvoyer
 });
 
-app.get('/DeadLink', async (req, res) => {
+app.get('/deadlink', async (req, res) => {
   res.render("presentations/ECLAIR/404.ejs", { data: listes }); // générer la page et la renvoyer
+});
+
+app.get('/ghostlisters', async (req, res) => {
+  res.render("presentations/BDE/ghostlisters.ejs", { data: listes }); // générer la page et la renvoyer
+});
+
+app.get('/peaky', async (req, res) => {
+  res.render("presentations/WEI/peaky.ejs", { data: listes }); // générer la page et la renvoyer
 });
 
 app.get('/vote', async (req, res) => {

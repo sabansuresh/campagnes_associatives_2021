@@ -66,68 +66,55 @@
   <!--  Pour chaque asso: -->
   <% for (const asso in data) { if (Object.hasOwnProperty.call(data, asso)) { const listes=data[asso]; %>
 
-    <% if (asso=="ECLAIR" ) {%>
+    <div id="<%=asso%>" class="section" ng-controller="<%=asso%>_Controller">
+      <!--  controller angular défini dans le script plus bas-->
 
-      <div id="<%=asso%>" class="section">
-        <!--  controller angular défini dans le script plus bas-->
+      <div class="center sectionTitle">
+        <%=asso%>
+      </div> <!--  nom de l'asso-->
+      <div class="divider" id="divide"></div>
 
-        <div class="center sectionTitle">
-          <%=asso%>
-        </div> <!--  nom de l'asso-->
-        <div class="divider" id="divide"></div>
-
-        <div class="container cardsContainer">
-
-          <!--  Une carte cliquable par liste avec le logo-->
-          <div class="card z-depth-4 listeCards">
-            <a href="/DeadLink">
+      <div class="container cardsContainer ng-hide" ng-hide="<%=asso%>_cards">
+        <!--  Une carte cliquable par liste avec le logo-->
+        <% listes.forEach((liste, i)=> { %>
+          <% if (liste.standalone==false) { %>
+          <div class="card z-depth-4 listeCards"
+            style="<%= liste.pipo ? 'box-shadow: 10px 10px 5px red;' : 'box-shadow: 10px 10px 5px green;'%>">
+            <a ng-click="<%=asso%>_display_liste<%=i%>()">
               <div class="card-image">
-                <img src="img/ECLAIR/DeadLink.png">
+                <img src="img/<%=liste.logo%>">
               </div>
             </a>
           </div>
-
-        </div>
-      </div>
-      <% } %>
-
-        <% if (asso !="ECLAIR" ) { %>
-
-          <div id="<%=asso%>" class="section" ng-controller="<%=asso%>_Controller">
-            <!--  controller angular défini dans le script plus bas-->
-
-            <div class="center sectionTitle">
-              <%=asso%>
-            </div> <!--  nom de l'asso-->
-            <div class="divider" id="divide"></div>
-
-            <div class="container cardsContainer ng-hide" ng-hide="<%=asso%>_cards">
-              <!--  Une carte cliquable par liste avec le logo-->
-              <% listes.forEach((liste, i)=> { %>
-                <div class="card z-depth-4 listeCards"
-                  style="<%= liste.pipo ? 'box-shadow: 10px 10px 5px red;' : 'box-shadow: 10px 10px 5px green;'%>">
-                  <a ng-click="<%=asso%>_display_liste<%=i%>()">
-                    <div class="card-image">
-                      <img src="img/<%=liste.logo%>">
-                    </div>
-                  </a>
-                </div>
-                <% }); %>
-
-            </div>
-
-            <% listes.forEach((liste, i)=> { %>
-              <div class="ng-hide listeDescription" ng-hide="<%=asso%>_liste<%=i%>">
-                <a ng-click="<%=asso%>_display_cards()" class="right"> <i class="material-icons"
-                    style="font-size: 50px;color:red;">clear</i></a>
-                <!--  Si la liste a une page de présentation on l'affiche, sinon on génére le template par défaut avec les infos de la liste -->
-                <% if (liste.html) { %>
-                  <%- include('presentations/'+liste.html, {liste: liste}); %>
-                <% } else { %>
-                  <%- include('presentations/default.ejs', {liste: liste}); %>
-                <% } %>
+          <% } %>
+          <% if (liste.standalone==true) { %>
+            <div class="card z-depth-4 listeCards"
+            style="<%= liste.pipo ? 'box-shadow: 10px 10px 5px red;' : 'box-shadow: 10px 10px 5px green;'%>">
+            <a href="/<%=liste.link%>">
+              <div class="card-image">
+                <img src="img/<%=liste.logo%>">
               </div>
-            <% }); %>
+            </a>
+          </div>
+          <% } %>
+          <% }); %>
+
+      </div>
+
+      <% listes.forEach((liste, i)=> { %>
+        <% if (!liste.standalone) {%>
+        <div class="ng-hide listeDescription" ng-hide="<%=asso%>_liste<%=i%>">
+          <a ng-click="<%=asso%>_display_cards()" class="right"> <i class="material-icons"
+              style="font-size: 50px;color:red;">clear</i></a>
+          <!--  Si la liste a une page de présentation on l'affiche, sinon on génére le template par défaut avec les infos de la liste -->
+          <% if (liste.html) { %>
+            <%- include('presentations/'+liste.html, {liste: liste}); %>
+          <% } else { %>
+            <%- include('presentations/default.ejs', {liste: liste}); %>
+          <% } %>
+        </div>
+        <% } %>
+      <% }); %>
 
           </div>
 
@@ -190,7 +177,6 @@
           </script>
     <% } %>
   <% } %>
-<% }; %>
 
 </body>
 

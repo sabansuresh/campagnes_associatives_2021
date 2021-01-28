@@ -1,0 +1,707 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<header>
+	<img src="https://i.imgur.com/iuYHnvw.png" class="light">
+	<div id="header">
+		<a href=""><img src="https://i.imgur.com/NovtsrC.png" style="width: 100%;"></a>
+
+		<a href="https://www.facebook.com/GhostListers" rel="noopener noreferrer" target="_blank">
+			<button class="button" type="button" id="button_fb"><img src="https://i.imgur.com/7J46PFH.png">@GhostListers</button></a>
+		<a href="https://www.instagram.com/ghostlisters" rel="noopener noreferrer" target="_blank">	
+			<button class="button" type="button" id="button_ig"><img src="https://i.imgur.com/h81bqtu.png">@ghostlisters</button></a>
+		<br>
+		<button class="button" type="button" id="button_team" onclick="team();"><img src="https://i.imgur.com/QPGB09r.png">Les brasseurs</button>
+		<button class="button" type="button" id="button_prog" onclick="prog();"><img src="https://i.imgur.com/lVgaD84.png">Le programme</button>
+		<!-- <button type="button" id="button_acti" onclick="acti();"><img src="https://i.imgur.com/QVLGW7c.png">Les activités</button> -->
+		<button class="button" type="button" id="button_deal" onclick="deal();"><img src="https://i.imgur.com/qvVWiRi.png">Les partenaires</button>
+	</div>
+	<img src="https://i.imgur.com/Exc4PH5.png" class="light">
+</header>
+<a href="/" style="color:red;text-decoration:none; position: absolute;top:0px;right:15px"><i class="material-icons sidenav-trigger" style="font-size:70px;">clear</i></a>
+<body>
+
+<div id="main" class="content" style="display: block">
+	<strong>If there's no more str, in your neighborhood</strong><br/>
+	<strong style="font-size: 1.25em;">Who you gonna call ?</strong><br/>
+	<div id="logocontainer"><img id="logo" src="https://i.imgur.com/BrmYiyS.png" width="250px"></div><br/>
+	<strong style="font-size: 1.25em; color: #00ff00;">Liste sério BDE 2021</strong><br/>
+	<span>Neuf brasseurs de l’extrême se sont réunis dans une liste BDE sur-motivée pour sauver Centrale Lyon de la disparition de la vie associative !</span><br/>
+	<span>Tenez-vous prêts pour des campagnes de folie !</span><br/><br/>
+	<span>En attendant, vous pouvez explorer notre page web et découvrir les lourds brasseurs de l'équipe, notre programme de mandat ou bien nos partenaires ! N'hésitez pas à cliquer un peu partout ;)</span>
+</div>
+
+<div id="team" class="content" style="display: none">
+	<div id="zanhson" class="member">
+		<div onmouseover="reveal('zanhson');">
+			<strong>Président</strong> <br/>
+			<img src="https://i.imgur.com/GNrVzJi.png" style="width : 75%"> <br/>
+			<strong>Zânhson</strong>
+		</div>
+
+		<div class="overlay" onmouseout="this.style.display = 'none';">
+			<strong>Président</strong> <br/>
+			<span>Zânhson, le parfait Prez ! Excellent orateur et lourd brasseur, il a déjà prouvé ses talents de fédérateur. Commuz, BDA, Eclymun, Club Kebab… sa motivation est hors-norme et il voit les choses en grand pour le prochain mandat BDE !</span>
+		</div>
+	</div>
+
+	<div id="aqwy" class="member">
+		<div onmouseover="reveal('aqwy');">
+			<strong>Vice-Présidente</strong> <br/>
+			<img src="https://i.imgur.com/ilRScY9.png" style="width : 75%"> <br/>
+			<strong>Aqwy</strong>
+		</div>
+
+		<div class="overlay" onmouseout="this.style.display = 'none';">
+			<strong>Vice-Présidente</strong> <br/>
+			<span>Aqwy, la géniale Vice-Prez ! Fidèle représentante du T56, elle est la sportive de l'équipe et a brassé le Raid et le Challenge à l'USEECL. Douée en gestion d'équipe et à l'écoute de tous, elle est sûrement l'as de trèfle qui piquera votre coeur !</span> <br/>
+		</div>
+	</div>
+
+	<div id="lankha" class="member">
+		<div onmouseover="reveal('lankha');">
+			<strong>Trésorier</strong> <br/>
+			<img src="https://i.imgur.com/e40n3Dy.png" style="width : 75%"> <br/>
+			<strong>Lankha</strong>
+		</div>
+
+		<div class="overlay" onmouseout="this.style.display = 'none';">
+			<strong>Trésorier</strong> <br/>
+			<span>Lankha, l'excellent Trez ! Fort d'une riche expérience (J.E., BDA, CLT, Éclair, STR, Danse, ...), il part sur un an de césure associative. Ce brasseur vit de nuit et perd souvent ses clés mais avec lui, les excels du BDE seront forcément à jour !</span>
+		</div>
+	</div>
+
+	<div id="tygha" class="member">
+		<div onmouseover="reveal('tygha');">
+			<strong>Vice-Trésorière</strong> <br/>
+			<img src="https://i.imgur.com/7zXmOsP.png" style="width : 75%"> <br/>
+			<strong>Tygha</strong>
+		</div>
+
+		<div class="overlay" onmouseout="this.style.display = 'none';">
+			<strong>Vice-Trésorière</strong> <br/>
+			<span>Tygha, la super Vice-Trez ! Calme mais motivée, cette brasseuse dans l'âme s'est déjà illustrée avec le BDEC. En duo avec Lankha, elle gérera les comptes du BDE en toutes circonstances. Résultat et trésorerie n'ont plus de secrets pour elle !</span>
+		</div>
+	</div>
+
+	<div id="neyla" class="member">
+		<div onmouseover="reveal('neyla');">
+			<strong>Secrétaire Générale</strong> <br/>
+			<img src="https://i.imgur.com/0kayUCc.png" style="width : 75%"> <br/>
+			<strong>Neyla</strong>
+		</div>
+
+		<div class="overlay" onmouseout="this.style.display = 'none';">
+			<strong>Secrétaire Générale</strong> <br/>
+			<span>Neyla, la SG du tonnerre ! Vous pouvez compter sur son orga légendaire : elle sait déjà jongler avec son cursus architecte et son implication dans l'associatif centralien. Cette brasseuse d'enfer ne vous décevra pas dans sa gestion du M16 !</span>
+		</div>
+	</div>
+
+	<div id="baullo" class="member">
+		<div onmouseover="reveal('baullo');">
+			<strong>VP Com Int</strong> <br/>
+			<img src="https://i.imgur.com/j2MzWvv.png" style="width : 75%"> <br/>
+			<strong>Baullô</strong>
+		</div>
+
+		<div class="overlay" onmouseout="this.style.display = 'none';">
+			<strong>VP Com Int</strong> <br/>
+			<span>Baullô, le Com Int de rêve ! Vous avez déjà pu le voir à l'action avec ses fameux posts dont il a le secret. Toujours à l'affût sur ses réseaux, cet infatigable brasseur maîtrise tous les outils : AQH, BDL, Insta, Twitch et même Zimbra !</span>
+		</div>
+	</div>
+
+	<div id="safhy" class="member">
+		<div onmouseover="reveal('safhy');">
+			<strong>VP Sponsors</strong> <br/>
+			<img src="https://i.imgur.com/LVyWpHr.png" style="width : 75%"> <br/>
+			<strong>Safhy</strong>
+		</div>
+
+		<div class="overlay" onmouseout="this.style.display = 'none';">
+			<strong>VP Sponsors</strong> <br/>
+			<span>Safhy, la VP Sponsors de folie ! Énergique et prête à tout pour s'amuser, elle égayera vos journées avec les actis les plus variées. Mais derrière cette grande enfant, il y a l'alternante, redoutable négociatrice et pro en toute situation !</span>
+		</div>
+	</div>
+
+	<div id="otah" class="member">
+		<div onmouseover="reveal('otah');">
+			<strong>VP Projets</strong> <br/>
+			<img src="https://i.imgur.com/wk1tUhS.png" style="width : 75%"> <br/>
+			<strong>Otah</strong>
+		</div>
+
+		<div class="overlay" onmouseout="this.style.display = 'none';">
+			<strong>VP Projets</strong> <br/>
+			<span>Otah, la VP Projets en or ! Avec toutes ses idées, elle pourrait refouquer tout Centrale. Sa bonne humeur et sa détermination vont certainement vous séduire. Comptez sur "Maman U56" pour des projets BDE audacieux et mémorables !</span>
+		</div>
+	</div>
+
+	<div id="twan" class="member">
+		<div onmouseover="reveal('twan');">
+			<strong>VP Events</strong> <br/>
+			<img src="https://i.imgur.com/PszJBPt.png" style="width : 75%"> <br/>
+			<strong>Twan</strong>
+		</div>
+
+		<div class="overlay" onmouseout="this.style.display = 'none';">
+			<strong>VP Events</strong> <br/>
+			<span>Twan, le VP Events de feu ! Sa fouque n'a d'égal que sa détermination à animer la vie centralienne. Enjoué et accessible, ce brasseur est résolu à régaler le campus. Il saura marquer l'histoire avec ses events et relancer l’asso comme personne !</span>
+		</div>
+	</div>
+</div>
+
+<div id="prog" class="content" style="display: none">
+
+	<div id="ecolo" class="focus">
+		<div onclick="curtail('boost'); curtail('comint'); curtail('comext'); curtail('digit'); stretch('ecolo');">
+			<strong>Transition écologique</strong> <br/>
+			<img src="https://i.imgur.com/BsObYwb.png" width="150px">
+		</div>
+
+		<div class="overlay" onclick="curtail('ecolo');">
+			<strong>Transition écologique</strong> <br/>
+			<span>
+				OBJECTIF : Intégration forte du développement durable
+				<div class="list">
+					<ul>
+						<li>améliorer la gestion des déchets sur le campus surtout les poubelles à verre et les déchets du RU à emporter</li>
+						<li>continuer la réflexion sur l'empreinte carbone dans l'asso et lors des events, en renforçant le rôle des respos DD et en relançant les réunions inter-assos régulières</li>
+						<li>soutenir divers projets comme Les Biens en Commun ou la Fresque du Climat ou ceux proposés par des assos</li>
+					</ul>
+				</div>
+			</span>
+		</div>
+	</div>
+
+	<div id="boost" class="focus">
+		<div onclick="curtail('comint'); curtail('comext'); curtail('ecolo'); curtail('digit'); stretch('boost');">
+			<strong>Relance de l'associatif</strong><br/>
+			<img src="https://i.imgur.com/UgJsRz1.png" width="150px">
+		</div>
+
+		<div class="overlay" onclick="curtail('boost')">
+			<strong>Relance de l'associatif</strong><br/>
+			<span>
+				OBJECTIF : Présence forte du BDE et davantage de cohésion
+				<div class="list">
+					<ul>
+					    <li>impliquer tous les étudiants dans la vie de campus grâce à des consultations régulières et animations le week-end</li>
+					    <li>avoir un VP Events BDE pour assurer la cohésion avec les assos concernées (WEI, Gala, Challenge, ...) et organiser un event spécial BDE (avec les alumni éventuellement)</li>
+					    <li>redynamiser l'associatif en accompagnant et en incitant les sections et clubs à travailler ensemble</li>
+					</ul>
+				</div>
+			</span>
+		</div>
+	</div>
+
+	<div id="digit" class="focus">
+		<div onclick="curtail('boost'); curtail('comint'); curtail('comext'); curtail('ecolo'); stretch('digit');">
+			<strong>Transition numérique</strong> <br/>
+			<img src="https://i.imgur.com/XfVmpEG.png" width="150px">
+		</div>
+
+		<div class="overlay" onclick="curtail('digit');">
+			<strong>Transition numérique</strong> <br/>
+			<span>
+				OBJECTIF : Amélioration des services informatiques
+				<div class="list">
+					<ul>
+						<li>mettre à jour les outils actuels de l'AEECL, à savoir le site associatif, les mails d'assos et les mailings lists</li>
+						<li>déployer MyECL et une plateforme de gestion d'asso afin de faciliter la vie aux étudiants (menus RU, location de matos, AMAP, ...) et aux brasseurs (orga, tréso, com', ...)</li>
+						<li>mettre en place un Centrale Mega Drive quali dédié à la pougne ET au brassage, ainsi qu'une carte des Colocs</li>
+					</ul>
+				</div>
+			</span>
+		</div>
+	</div>
+
+	<div id="comint" class="focus">
+		<div onclick="curtail('boost'); curtail('comext'); curtail('ecolo'); curtail('digit'); stretch('comint')">
+			<strong>Communication interne</strong> <br/>
+			<img src="https://i.imgur.com/9EouRWn.png" width="150px">
+		</div>
+
+		<div class="overlay" onclick="curtail('comint')">
+			<strong>Communication interne</strong> <br/>
+			<span>
+				OBJECTIF : Meilleur accès aux informations pour tous
+				<div class="list">
+					<ul>
+						<li>installer un écran géant au M16 pour la com' des assos, les annonces et la couverture des événements, etc.</li>
+						<li>créer un média audiovisuel complémentaire au PH et pouvant fonctionner en mode distanciel (radio, twitch)</li>
+						<li>faciliter l'accès aux informations via ce canal et MyECL afin d'avoir une intégration complémentaire à celle par les 2As, notamment pour les cursus non classiques</li>
+					</ul>
+				</div>
+			</span>
+		</div>
+	</div>
+
+	<div id="comext" class="focus">
+		<div onclick="curtail('boost'); curtail('comint'); curtail('ecolo'); curtail('digit'); stretch('comext');">
+			<strong>Communication externe</strong> <br/>
+			<img src="https://i.imgur.com/XHUV50m.png" width="150px">
+		</div>
+
+		<div class="overlay" onclick="curtail('comext');">
+			<strong>Communication externe</strong> <br/>
+			<span>
+				OBJECTIF : Faire rayonner l'associatif centralien
+				<div class="list">
+					<ul>
+						<li>renforcer les liens entre BDE, RelEx et DirCom' pour faire connaître l'asso aux prépas, autres écoles et entreprises</li>
+						<li>se rapprocher de l'ENISE, du CLOE, du CHEL[s] et des écoles de Lyon avec de nouveaux events inter-écoles comme un Challenge artistique, des jam sessions, etc.</li>
+						<li>enrichir la vie étudiante à travers des partenariats et des intervenants prestigieux aux conférences AGORA</li>
+					</ul>
+				</div>
+			</span>
+		</div>
+	</div>
+</div>
+
+<div id="acti" class="content" style="display: none">
+	<span>On vous a préparé du très lourd ! On mettra à jour cette section quand le calendrier des activités aura été validé par le CAA ;)</span>
+</div>
+
+<div id="deal" class="content" style="display: none">
+	<div id="pumpkin" class="partner">
+		<div onclick="reveal('pumpkin');">
+			<strong>Pumpkin</strong> <br/>
+			<img src="https://i.imgur.com/C6vsAjZ.png" style="width : 70%; margin: 5px">
+		</div>
+
+		<div class="overlay" onclick="this.style.display = 'none';">
+			<strong><a href="https://pumpkin-app.co/" target="_blank">Pumpkin</a></strong> <br/>
+			<br/><span>Avec Pumpkin, rembourse tes potes, dépense ton solde partout, sans frais à l'étranger et récupère du cashback toute l'année ! <br> La carte Pumpkin te fait même gagner de l'argent !</span><br/>
+			<span class="link"><a href="https://pumpkin-app.co/" target="_blank">Lien</a></span>
+		</div>
+	</div>
+
+	<div id="ubereats" class="partner">
+		<div onclick="reveal('ubereats');">
+			<strong>Uber Eats</strong> <br/>
+			<img src="https://i.imgur.com/vQNIY8F.png" style="width : 70%; margin: 5px">
+		</div>
+
+		<div class="overlay" onclick="this.style.display = 'none';">
+			<strong><a href="https://www.ubereats.com/fr" target="_blank">Uber Eats</a></strong> <br/>
+			<br/><span>La fameuse application de livraison est notre partenaire ! Profite de nombreux avantages en rejoignant le programme Centrale Lyon qu'on a mis en place, et régale-toi !</span><br/>
+			<span class="link"><a href="https://redeem.uber.com/public/opt-in/ad74e7c4-4f47-4065-b032-77ceaf3cd98f#" target="_blank">Lien</a></span>
+		</div>
+	</div>
+
+<!-- 
+	<div id="primestudent" class="partner">
+		<div onclick="reveal('primestudent');">
+			<strong>Prime Student</strong> <br/>
+			<img src="https://i.imgur.com/jplxLJa.png" style="width : 70%; margin: 5px">
+		</div>
+
+		<div class="overlay" onclick="this.style.display = 'none';">
+			<strong><a href="" target="_blank">Prime Student</a></strong> <br/>
+			<br/><span>Offre étudiante du géant de la distribution Amazon. Avec le lien GhostListers, profitez d'une livraison prioritaire, de films et séries, de plus de 2 millions de titres musicaux.</span><br/>
+			<span class="link"><a href="" target="_blank">Lien</a></span>
+		</div>
+	</div>
+ -->
+
+	<div id="envoituresimone" class="partner">
+		<div onclick="reveal('envoituresimone');">
+			<strong>En Voiture Simone</strong> <br/>
+			<img src="https://i.imgur.com/CqBx9QW.png" style="width : 70%; margin: 5px">
+		</div>
+
+		<div class="overlay" onclick="this.style.display = 'none';">
+			<strong><a href="https://www.envoituresimone.com/" target="_blank">En Voiture Simone</strong></a> <br/>
+			<br/><span>Partenaire actuel du BDE de Centrale Lyon, cette auto-école en ligne fait confiance aux GhostListers pour reprendre les affaires. <br/> Ne perdez plus de temps, passez le permis vite fait !</span><br/>
+			<span class="link"><a href="https://app.adjust.com/c4yhx55?campaign=Campus_Listes&adgroup=Centrale Lyon&creative=Liste_GhostListers" target="_blank">Lien</a></span>
+		</div>
+	</div>
+
+	<div id="hellofresh" class="partner">
+		<div onclick="reveal('hellofresh');">
+			<strong>HelloFresh</strong> <br/>
+			<img src="https://i.imgur.com/exeK4R4.png" style="width : 70%; margin: 5px">
+		</div>
+
+		<div class="overlay" onclick="this.style.display = 'none';">
+			<strong><a href="https://www.hellofresh.fr/" target="_blank">HelloFresh</a></strong> <br/>
+			<br/><span>Célèbre fournisseur de kits repas, HelloFresh propose de livrer des box à cuisiner neutres en CO2. Au menu : des recettes à tomber, des économies, un gain de temps et moins de gâchis !</span><br/>
+			<span class="link"><a href="https://www.hellofresh.fr/plans?c=GHOSTLISTERS" target="_blank">Code : GhostListers</a></span>
+		</div>
+	</div>
+
+	<div id="freemiumplay" class="partner">
+		<div onclick="reveal('freemiumplay');">
+			<strong>FreemiumPlay</strong> <br/>
+			<img src="https://i.imgur.com/7FdgoQE.png" style="width : 70%; margin: 5px">
+		</div>
+
+		<div class="overlay" onclick="this.style.display = 'none';">
+			<strong><a href="https://freemiumplay.com/" target="_blank">FreemiumPlay</a></strong> <br/>
+			<br/><span>Première e-carte cadeau 100% loisirs numériques, FreemiumPlay vous permet d'offrir ou de vous régaler avec des abonnements aux services digitaux de leurs nombreux partenaires !</span><br/>
+			<span class="link"><a href="https://freemiumplay.com/" target="_blank">Lien</a></span>
+		</div>
+	</div>
+</div>
+
+</body>
+
+<style type="text/css">
+	html {
+		max-width: 100%;
+		min-height: 100%;
+		background: linear-gradient(rgb(0, 0, 0), rgb(0, 17, 0));
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		font-family: Trebuchet MS;
+		text-align: center;
+		color:  white;
+	}
+
+	a {
+		color: white;
+	}
+
+	header {
+		text-align: center;
+		vertical-align: middle;
+	}
+
+	header img {
+		text-align: center;
+		vertical-align: top;
+		margin: 1vh 0vw 1vh 0vw;
+	}
+
+	#header {
+		display: inline-block;
+		text-align: center;
+		vertical-align: top;
+		border-bottom: solid green;
+	}
+
+	.button {
+		cursor: pointer;
+		background: linear-gradient(rgb(0, 255, 0), rgb(0, 235, 10));
+		border: 0;
+		border-radius: 4%;
+		font-family: Trebuchet MS;
+		font-size: 90%;
+		vertical-align: middle;
+		text-align: left;
+	}
+
+	.button img {
+		margin: 0 6px 0 0;
+		vertical-align: middle;
+	}
+
+	#button_fb {
+		background: linear-gradient(rgb(59, 89, 152), rgb(59, 89, 152));
+		color: white;
+	}
+
+	#button_ig {
+		background: linear-gradient(rgb(131,58,180), rgb(247,119,55));
+		color: white;
+	}
+
+	.content {
+		margin: 0 auto; 
+		text-align: center;
+	} 
+
+	.overlay {
+		display: none;
+	    position: relative;
+	    width: 100%;
+		height: 100%;
+	    background-color: #003b00;
+	    opacity: 0.9;
+	    color:  white;
+	    z-index: 2;
+	}
+
+	strong {
+		color: white;
+		font-size: 1em;
+		z-index: 3;
+	}
+
+	.member, .focus, .partner {
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 1em;
+		margin-bottom: 5px;
+	}
+
+	.member span {
+		display: block;
+		margin-top: 5px;
+	}
+
+	#team .overlay {
+		top: -187px;
+	}
+
+	#prog img {
+		margin-top: 5px;
+	}
+
+	#prog img, #deal img {
+		margin-top: 5px;
+		-webkit-transition:-webkit-transform 1s;
+		-moz-transition:-moz-transform 1s;
+		-o-transition:-o-transform 1s;
+		-ms-transition:-ms-transform 1s;
+		transition:transform 1s;
+	}
+
+	#prog img:hover, #deal img:hover {
+		-webkit-transform:rotate(360deg);
+		-moz-transform:rotate(360deg);
+		-o-transform:rotate(360deg);
+		-ms-transform:rotate(360deg);
+		transform:rotate(360deg);
+	}
+
+	#prog .list {
+		display: flex;
+		text-align: left;
+	}
+
+	#prog ul {
+		list-style-type: "\2699  ";
+	}
+
+	@media (min-width: 600px) {
+		.light {
+			width: 15vw;
+		}
+
+		#header {
+			width: 40vw;
+			min-width: 350px;
+			padding-bottom: 1vh;
+		}
+
+		.button {
+			width: 160px;
+			height: 7.5vh;
+			min-height: 30px;
+			max-height: 50px;
+			margin: 0.5vh 0vw 0.5vh 0.25vw;
+		}
+
+		.button:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 0 15px rgba(255, 255, 255, 0.75);
+		}
+
+		.button img {
+			height: 5vh;
+			max-height: 40px;
+		}
+
+		.content {
+			width: 75vw;
+			min-width: 480px;
+		}
+
+		#logocontainer{
+		    padding: 10px;
+		    overflow: visible;
+		}
+
+		#logo{
+			transform-origin: 50% 60%;
+			transition: transform 5s linear;
+		}
+
+		#logo:hover{    
+		    transform: scale(3);
+		}
+
+		.member {
+			width: 200px;
+			height: 200px;
+		}
+
+		#prog .overlay {
+			top: -173.75px;
+		}
+
+		#prog ul {
+			margin-left: -10px;
+			margin-right: 5px;
+		}
+
+		.focus {
+			width: 300px;
+			height: 200px;
+		}
+
+		#deal .overlay {
+		    top: -168.75px;
+		}
+
+		.partner {
+			width: 200px;
+			height: 200px;
+		}
+
+		.link {
+			display: block;
+			margin-top: 10px;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.light {
+			display: none;
+		}
+
+		#header {
+			width: 90vw;
+			margin: 0 0 1vh 0;
+			padding-bottom: 1vh;
+		}
+
+		.button {
+			width: 40vw;
+			min-width: 80px;
+			max-width: 160px;
+			height: 5vh;
+			margin: 0.5vh 0vw 0.5vh 0.5vw;
+		}
+
+		.button img {
+			height: 4.5vh;
+			max-height: 30px;
+			margin: 0 6px 0 0;
+			vertical-align: middle;
+		}
+
+		.content {
+			width: 90vw;
+		}
+
+		#logocontainer{
+		    padding: 5px;
+		    overflow: visible;
+		}
+
+		#logo{
+			transform-origin: 50% 60%;
+			transition: transform 5s linear;
+			user-select: none;
+			-webkit-user-select: none;
+		}
+
+		#logo:active{    
+		    transform: scale(3);
+		}
+
+		#team .overlay {
+			top: -150px;
+		}
+
+		.member {
+			width: 150px;
+			height: 150px;
+			margin-bottom: 15px;
+		}
+
+		.member span {
+			font-size: 0.75em;
+			margin-top: 5px;
+		}
+
+		#prog .overlay {
+			top: -174px;
+		}
+
+		#prog ul {
+			list-style-type: "\2699  ";
+			margin-left: -2px;
+			margin-right: 1px;
+		}
+
+		.focus {
+			width: 300px;
+			max-width: 93.75%;
+			height: 200px;
+		}
+
+		.focus span {
+			font-size: 0.75em;
+		}
+
+		#deal .overlay {
+			top: -134px;
+		}
+
+		.partner {
+			width: 150px;
+			height: 150px;
+		}
+
+		.partner span {
+			font-size: 0.75em;
+		}
+
+		.link {
+			display: block;
+			margin-top: 3px;
+		}
+	}
+</style>
+
+<script type="application/javascript">
+function team() {
+	document.getElementById("main").style.display = "none";
+	document.getElementById("team").style.display = "block";
+	document.getElementById("prog").style.display = "none";
+	document.getElementById("acti").style.display = "none";
+	document.getElementById("deal").style.display = "none";
+}
+
+function prog() {
+	document.getElementById("main").style.display = "none";
+	document.getElementById("prog").style.display = "block";
+	document.getElementById("team").style.display = "none";
+	document.getElementById("acti").style.display = "none";
+	document.getElementById("deal").style.display = "none";
+}
+
+function acti() {
+	document.getElementById("main").style.display = "none";
+	document.getElementById("team").style.display = "none";
+	document.getElementById("prog").style.display = "none";
+	document.getElementById("acti").style.display = "block";
+	document.getElementById("deal").style.display = "none";
+}
+
+function deal() {
+	document.getElementById("main").style.display = "none";
+	document.getElementById("team").style.display = "none";
+	document.getElementById("prog").style.display = "none";
+	document.getElementById("acti").style.display = "none";
+	document.getElementById("deal").style.display = "block";
+}
+
+function reveal(divname) {
+	document.getElementById(divname).querySelector(".overlay").style.display = "block";
+}
+
+function stretch(divname) {
+	document.getElementById(divname).style.width = "450px";
+	reveal(divname);
+}
+
+function curtail(divname) {
+	document.getElementById(divname).style.width = "300px";	
+	document.getElementById(divname).getElementsByClassName('overlay')[0].style.display = "none";
+}
+</script>

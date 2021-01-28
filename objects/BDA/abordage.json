@@ -1,6 +1,7 @@
 {
 
 "nom" : "A l’abord’art",
+"standalone": false,
 "membres" : ["Prez : Romane Barge (Atha)",
             "SG : Sibylle Brunet (Huli)",
             "Trez : Yanis Meziani (Nahnas)",

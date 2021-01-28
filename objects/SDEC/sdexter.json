@@ -1,0 +1,24 @@
+{
+    "nom" : "Le Laboratoire de SDeC'xter",
+    "standalone": false,
+    "membres" : ["Danmo - Alexandre Cellier-Devaux",
+                "Deedaçe - Sebastian Flores",
+                "Déhena - Axelle Minet",
+                "Nykhof - Timothée Pouille",
+                "Nysthée - Sophie Bessac",
+                "Vahly - Pierre Komitau"
+    ],   
+    "logo":"/SDEC/sdec.png",
+    "description" : "Les SDeC'xters sont prêts à construire la plus grande invention jamais créée : une machine ultime multifonction pour imprimer, agrafer, et envoyer les polys aux Centralien.ne.s confiné.e.s. Une autre fonction de cette machine devait être la reliure thermocollée, mais Dee-Dee a encore tout cassé. Comment les SDeC'xters vont-ils alors ramener la reliure thermocollée au local du SDeC ?",
+    "socials" : {
+    "Facebook" : "https://www.facebook.com/106277424678358"
+    },
+    "programmeList" :["Canapé au SDeC",
+        "Reliures thermocollées",
+        "Épicerie",
+        "Revente de livres de langues",
+        "Boîte à livres",
+        "Concours d’écriture"
+    ]
+}
+    
