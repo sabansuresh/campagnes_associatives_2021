@@ -4,7 +4,7 @@
   "description": "site des campagnes de l'AEECL 2020",
   "main": "server.js",
   "scripts": {
-    "devStart": "nodemon thatboy.js",
+    "devStart": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
