@@ -1,5 +1,5 @@
 function countdown() {
-  var timeLeft = +new Date("2021-03-28 13:00") - +new Date(); // changer la date des votes
+  var timeLeft = +new Date('2021-01-28 12:25') - +new Date(); // changer la date des votes
 
   var daysLeft = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
   var hoursLeft = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);

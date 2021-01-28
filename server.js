@@ -85,7 +85,7 @@ createdb = function () {
 //createdb();
 
 app.get('/', async (req, res) => {
-  res.render("index.ejs", { data: listes }); // générer la page et la renvoyer
+  res.render("index.ejs", { data: listes, showLinkToVotePage: new Date() > new Date ('2021-01-28 12:25'), showLinkToResultsPage: false }); // générer la page et la renvoyer
 });
 
 app.get('/login', async (req, res) => {
