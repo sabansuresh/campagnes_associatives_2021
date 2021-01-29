@@ -26,6 +26,7 @@ listes = {
   BI: [birates]
 }
 
+const voteDate = '2021-01-28 12:25';
 
 /*
 for (const asso in data) {
@@ -88,7 +89,7 @@ createdb = function () {
 //createdb();
 
 app.get('/', async (req, res) => {
-  res.render("index.ejs", { data: listes, showLinkToVotePage: new Date() > new Date('2021-01-28 12:25'), showLinkToResultsPage: false }); // générer la page et la renvoyer
+  res.render("index.ejs", { data: listes, showLinkToVotePage: new Date() > new Date(voteDate), showLinkToResultsPage: false }); // générer la page et la renvoyer
 });
 
 app.get('/login', async (req, res) => {
@@ -136,11 +137,15 @@ app.post('/vote_post', async (req, res) => {
   db.all("SELECT voted FROM adherents WHERE id=?", [user_id], (err, rows) => {
     if (err) {
       console.error(err);
+      res.sendStatus(500);
     } else if (rows.length != 1) {
-      console.error('nb users with id' + user_id + 'rows.length' + ' = ' + rows.length + 'not equal to 1');
+      console.error('nb users with id ' + user_id + ' rows.length ' + ' = ' + rows.length + ' not equal to 1');
+      res.sendStatus(500);
     } else {
-      if (rows.voted) {
-        console.error("l'utilisateur" + user_id + "a déja voter");
+      console.log(rows);
+      if (rows[0].voted) {
+        console.error("l'utilisateur " + user_id + " a déja voté");
+        res.sendStatus(500);
       } else {
         db.each("SELECT nom AS asso, listes FROM assos", function (err, row) {
           if (err) {
@@ -179,10 +184,11 @@ app.post('/vote_post', async (req, res) => {
               });
 
             }
-            // res.send(req.body);      
           }
 
         });
+        res.render("index.ejs", { data: listes, showLinkToVotePage: new Date() > new Date(voteDate), showLinkToResultsPage: false }); // générer la page et la renvoyer   
+
       }
     }
   });
