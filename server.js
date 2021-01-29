@@ -15,16 +15,13 @@ const sdec = require('./objects/SDEC/sdexter.json');
 const birates = require('./objects/BI/Birate.json');
 
 listes = {
-  BDE: [{ nom: "gosthlisters", logo: "BDE/ghostlisters.png", pipo: false, standalone: true, link:"ghostlisters"},
-  { nom: "koh-lanta L'iste des héros", logo: "BDE/listeHeros.jpg", pipo: false, html: "BDE/heros" ,standalone: false  },
-  { nom: "pipo bde", logo: "icon.png", pipo: true }
+  BDE: [{ nom: "gosthlisters", logo: "BDE/ghostlisters.png", pipo: false, standalone: true, link: "ghostlisters" },
+  { nom: "koh-lanta L'iste des héros", logo: "BDE/listeHeros.jpg", pipo: false, html: "BDE/heros", standalone: false },
   ],
-  ECLAIR: [{ nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false , standalone: true, link:"deadlink"},
-  { nom: "pipo Éclair", logo: "icon.png", pipo: true, standalone: false}
-  ],
+  ECLAIR: [{ nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false, standalone: true, link: "deadlink" }],
   BDA: [abordage],
   PAO: [spationautes],
-  WEI: [weistern,{nom:"Peaky WEI'nders", logo :"WEI/peaky.png" , pipo:false, standalone:true,link:"peaky"}],
+  WEI: [weistern, { nom: "Peaky WEI'nders", logo: "WEI/peaky.png", pipo: false, standalone: true, link: "peaky" }],
   SDeC: [sdec],
   BI: [birates]
 }
@@ -91,7 +88,7 @@ createdb = function () {
 //createdb();
 
 app.get('/', async (req, res) => {
-  res.render("index.ejs", { data: listes, showLinkToVotePage: new Date() > new Date ('2021-01-28 12:25'), showLinkToResultsPage: false }); // générer la page et la renvoyer
+  res.render("index.ejs", { data: listes, showLinkToVotePage: new Date() > new Date('2021-01-28 12:25'), showLinkToResultsPage: false }); // générer la page et la renvoyer
 });
 
 app.get('/login', async (req, res) => {
@@ -136,48 +133,60 @@ app.post('/vote_post', async (req, res) => {
   // var user_id='hmenard';
   var user_id = xss(req.body.user_id);
 
-
-  db.each("SELECT nom AS asso, listes FROM assos", function (err, row) {
+  db.all("SELECT voted FROM adherents WHERE id=?", [user_id], (err, rows) => {
     if (err) {
-      console.log(err);
-      res.sendStatus(500);
+      console.error(err);
+    } else if (rows.length != 1) {
+      console.error('nb users with id' + user_id + 'rows.length' + ' = ' + rows.length + 'not equal to 1');
     } else {
-      console.log(row);
-      l = JSON.parse(row.listes);
-      console.log("\nl:\n");
-      console.log(l);
-      console.log(row.asso);
+      if (rows.voted) {
+        console.error("l'utilisateur" + user_id + "a déja voter");
+      } else {
+        db.each("SELECT nom AS asso, listes FROM assos", function (err, row) {
+          if (err) {
+            console.log(err);
+            res.sendStatus(500);
+          } else {
+            console.log(row);
+            l = JSON.parse(row.listes);
+            console.log("\nl:\n");
+            console.log(l);
+            console.log(row.asso);
 
-      if (req.body[row.asso] && Object.hasOwnProperty.call(l, req.body[row.asso])) {
+            if (req.body[row.asso] && Object.hasOwnProperty.call(l, req.body[row.asso])) {
 
-        console.log(req.body[row.asso]);
-        l[req.body[row.asso]].votes += 1;
-        console.log(l[req.body[row.asso]]);
+              console.log(req.body[row.asso]);
+              l[req.body[row.asso]].votes += 1;
+              console.log(l[req.body[row.asso]]);
 
-        var update = db.prepare("UPDATE assos SET listes=? WHERE nom=? ");
+              var update = db.prepare("UPDATE assos SET listes=? WHERE nom=? ");
 
-        update.run(JSON.stringify(l), row.asso);
+              update.run(JSON.stringify(l), row.asso);
 
-        update.finalize();
+              update.finalize();
 
-        console.log("\ndb:\n");
+              console.log("\ndb:\n");
 
-        var add_has_voted = db.prepare("update adherents set voted=true where id=?;");
+              var add_has_voted = db.prepare("update adherents set voted=true where id=?;");
 
-        add_has_voted.run(user_id);
+              add_has_voted.run(user_id);
 
-        add_has_voted.finalize();
+              add_has_voted.finalize();
 
 
-        db.each("SELECT * FROM assos", function (err, row) {
-          console.log(row);
+              db.each("SELECT * FROM assos", function (err, row) {
+                console.log(row);
+              });
+
+            }
+            // res.send(req.body);      
+          }
+
         });
-
       }
-      // res.send(req.body);      
     }
-
   });
+
 
 })
 
