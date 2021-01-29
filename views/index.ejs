@@ -77,7 +77,7 @@
       <div class="container cardsContainer ng-hide" ng-hide="<%=asso%>_cards">
         <!--  Une carte cliquable par liste avec le logo-->
         <% listes.forEach((liste, i)=> { %>
-          <% if (liste.standalone==false) { %>
+          <% if (!liste.standalone) { %>
           <div class="card z-depth-4 listeCards"
             style="<%= liste.pipo ? 'box-shadow: 10px 10px 5px red;' : 'box-shadow: 10px 10px 5px green;'%>">
             <a ng-click="<%=asso%>_display_liste<%=i%>()">
@@ -86,8 +86,7 @@
               </div>
             </a>
           </div>
-          <% } %>
-          <% if (liste.standalone==true) { %>
+          <% } else { %>
             <div class="card z-depth-4 listeCards"
             style="<%= liste.pipo ? 'box-shadow: 10px 10px 5px red;' : 'box-shadow: 10px 10px 5px green;'%>">
             <a href="/<%=liste.link%>">
