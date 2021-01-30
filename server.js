@@ -26,7 +26,7 @@ listes = {
   BI: [birates]
 }
 
-const voteDate = '2021-01-28 12:25';
+const voteDate = '2021-02-04 00:00';
 
 /*
 for (const asso in data) {
