@@ -1,0 +1,17 @@
+{
+    "nom" : "Le Réconphort",
+    "standalone": false,
+    "membres" : ["Pierre Arzul (Mhanny)",
+                "Nicolas Malleton (Joe Bidon)",
+                "Romane Barge (Atha)", 
+                "Gaspard Boraud (Kappik)" 
+    ],   
+    "logo":"/PH/reconphort.png",
+    "description" : "Après l'effort, Le Réconphort !",
+    "socials" : {
+    "Facebook" : "https://www.facebook.com/Le-R%C3%A9conphort-La-Une-102889698359843/"
+    },
+    "clickable" :true
+    }
+     
+   

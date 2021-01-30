@@ -1,0 +1,28 @@
+{
+    "nom" : "La Revanche des CTN",
+    "standalone": false,
+    "membres" : ["Baptiste Bourrouilhou (Siika)",
+				"Zach Michel (Kidh)",
+				"MJules ansion (Teuzhz)",
+				"Nawfal Mellah (Goupy)",
+				"Arthur Cosson (V)",
+				"DEdgar esainte-Maréville (Dykah)",
+				"Eliam Tchandeu Noundou (Yzos)",
+				"Enzo Pelous (Teryx)",
+				"Baptiste Brudy-Saintespes (Tygoh)",
+				"Réjane Bastien (Nomhy)",
+				"Naïl Mulatier (Watt)",
+				"Benjamin Frisch (Nolphé)",
+				"Ethan Rollier (LA POFF)",
+				"Pierre Gallou-Guyot (Tmax)",
+				"Valentin Delteil (Zookah)",
+				"Alizée Favrat (Délia)"
+    ],   
+    "logo":"/CTN/revancheDesCTN.jpg",
+    "description" : "Venus tout droit des tréfonds de la galaxie, les CTN sont là pour prendre leur revanche. Restez branchés.",
+    "socials" : {
+    "Facebook" : "https://www.facebook.com/lrdCTN"
+    },
+    "clickable" :true
+}
+     

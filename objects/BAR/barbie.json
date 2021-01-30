@@ -1,0 +1,29 @@
+{
+    "nom" : "Bar'bie",
+    "standalone": false,
+    "membres" : ["Pacôme Roy de Lachaise (Banna)",
+                "Jean Beuselinck (Skouter)",
+                "Gabriel De la Noue (Wejdene)",
+                "Geoffrey Zitzmann-Andrieux (Sama)",
+                "Siméon Roffidal (Livay)",
+                "Quentin Alcayde (Mara)",
+                "Paul Samuel (Delfy)",
+                "Benjamin Firsh (Nolfé)",
+                "Guillaume Lysé (Adhé)",
+                "Nathan Rogier (Biscow)",
+                "Romane Bracquart (Wood)",
+                "Chloé Adam (Fizz)",
+                "Elise Navarre (Lymyh)",
+                "Emilien Paganelli (Sukr)",
+                "Etienne Gontharet (Sky)",
+                "Martin De Lard (Track)"
+    ],   
+    "logo":"/bar/barbie.png",
+    "description" : "La liste la plus houblonnée de Centrale",
+    "socials" : {
+    "Facebook" : "https://www.facebook.com/Bar-Bie-106392878013055"
+    },
+    "clickable" :true
+    }
+     
+   

@@ -13,18 +13,34 @@ const spationautes = require('./objects/PAO/spationautes.json');
 const weistern = require('./objects/WEI/weistern.json');
 const sdec = require('./objects/SDEC/sdexter.json');
 const birates = require('./objects/BI/Birate.json');
+const ctn = require('./objects/CTN/revancheDesCTN.json');
+const eco = require('./objects/ECO/SherlECOlmes.json');
+const ph = require('./objects/PH/reconphort.json');
+const teletubies = require('./objects/BI/teletuBIes.json');
+const bdr = require('./objects/BDR/BDAirKO.json');
+const gala = require('./objects/GALA/galalPacino.json');
+const relex = require('./objects/Relex/angelaMerkelex.json');
 
 listes = {
-  BDE: [{ nom: "gosthlisters", logo: "BDE/ghostlisters.png", pipo: false, standalone: true, link: "ghostlisters" },
-  { nom: "koh-lanta L'iste des héros", logo: "BDE/listeHeros.jpg", pipo: false, html: "BDE/heros", standalone: false },
+  "BDA": [abordage,{nom: "Gér'art Jugnot",pipo:true,clickable:false,logo:"/BDA/gerart.jpg", standalone: false},{nom: "Artine Marion",pipo:true,clickable:false,logo:"/BDA/artine.jpg", standalone: false},{nom: "Bureau de l'Amour",pipo:true,clickable:false,logo:"/BDA/amour.png", standalone: false}],
+  "BDE": [{ nom: "Les Gosthlisters", logo: "BDE/ghostlisters.png", pipo: false, standalone: true, link:"ghostlisters", clickable : true},
+  { nom: "koh-lanta L'iste des héros", logo: "BDE/listeHeros.jpg", pipo: false, html: "BDE/heros" ,standalone: false, clickable : true  },
+  { nom: "Bureau Des Etoiles", logo: "/BDE/manda.jpg", pipo: true , clickable : false }
   ],
-  ECLAIR: [{ nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false, standalone: true, link: "deadlink" }],
-  BDA: [abordage],
-  PAO: [spationautes],
-  WEI: [weistern, { nom: "Peaky WEI'nders", logo: "WEI/peaky.png", pipo: false, standalone: true, link: "peaky" }],
-  SDeC: [sdec],
-  BI: [birates]
-}
+  "BDR":[bdr,{nom: "Bureau du Redoublement",pipo:true,clickable:false,logo:"/BDR/redoublement.png", standalone: false},{nom: "BDéric Zemmour",pipo:true,clickable:false,logo:"/BDR/bdz.jpg", standalone: false}],
+  "ECLAIR": [{ nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false , standalone: true, link:"deadlink", clickable : true},
+  { nom: "pipo Éclair", logo: "icon.png", pipo: true, standalone: false, clickable : true}
+  ],
+  "PAO": [spationautes,{nom: "Pipo Sword Online",pipo:true,clickable:false,logo:"/PAO/pipao.png", standalone: false}],
+  "WEI": [weistern,{nom:"Peaky WEI'nders", logo :"WEI/peaky.png" , pipo:false, standalone:true,link:"peaky", clickable : true}],
+  "PLANET8CO" : [eco,{nom: "Pas-net & Kro",pipo:true,clickable:false,logo:"/ECO/panet.png", standalone: false}],
+  "BI": [birates,teletubies],
+  "SDeC": [sdec],
+  "RELEX":[relex],
+  "GALA":[gala],
+  "PH":[ph],
+  "CTN":[ctn]
+  }
 
 const voteDate = '2021-02-04 00:00';
 

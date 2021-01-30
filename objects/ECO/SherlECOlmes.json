@@ -1,0 +1,21 @@
+{
+    "nom" : "Sherl’ECOlmes",
+    "standalone": false,
+    "membres" : ["Enguerrand Devarenne (Yaroh)",
+				"Camille Normant (Foũkhy)",
+				"Joseph Garnier (Aznavour)",
+				"Marion Cornic (Nixie)",
+				"Marion George (Chappyh)",
+				"Raquel Gonzalez (Zalyah)",
+				"Agathe Michot (Méthribû)",
+				"Solène Bordin (Mikuih)",
+				"Amélie Djouahra (Lyggah)",
+				"Flora Parisel (Khrimmy)",
+				"Logan Mosser (Givreh) ",
+				"Manon Salangre (Herrhow)",
+				"Pierre-Louis Gilbert (Sanhson) "
+    ],   
+    "logo":"/ECO/eco.png",
+	"clickable" : true
+}
+     

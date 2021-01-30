@@ -1,0 +1,25 @@
+{
+
+    "nom" : "The Gal'Al Pacino",
+    "standalone": false,
+    "membres" : ["Florian Devambez (Pidou)",
+                "Paul Serafin (Lyhnks)",
+                "Chloé Dubray (Haya)",
+                "Etienne Gontharet (Sky)",
+                "Oscar Bolzinger (Babbooh)",
+                "Paul Samuel (Delfy)",
+                "Pierre-Antoine Viudès (Yager)",
+                "Pacôme de Lachaise (Banna) ",
+                "Rayan Messekher (Dixou) ",
+                "Flore Lafon (Tihee)" ,
+                "Théo Sinnig (Ussayn)" 
+    ],   
+    "logo":"/Gala/galalPacino.png",
+    "description" : "Bandits, mafieux ou menu fretin, cette page est faite pour vous retrouver afin d'organiser au mieux vos activités criminelles.",
+    "socials" : {
+    "Facebook" : "https://www.facebook.com/galalpacino/"
+    },
+    "clickable" :true
+    }
+     
+   

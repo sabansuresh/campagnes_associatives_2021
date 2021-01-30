@@ -29,17 +29,20 @@
         <span style="position: absolute;left:0px;top:0px" id="menu_icon_navbar">
           <i class="material-icons sidenav-trigger" data-target="side-menu" style="font-size:2em;">menu</i>
         </span>
+        <% if(showLinkToVotePage){ %>
         <span style="position: absolute;left:40px;top:0px"><a href="/login"><i class="material-icons sidenav-trigger" style="font-size:2em;">lock</i></a></span>
+        <% }else{ %>
+          <span style="position: absolute;left:40px;top:0px"><a><i class="material-icons sidenav-trigger" style="font-size:2em;opacity:0.8">lock</i></a></span>
+        <% } %> 
         <% if(showLinkToVotePage){ %>
           <span style="position: absolute;left:80px;top:0px"><a href="/vote"><i class="material-icons sidenav-trigger" style="font-size:2em;">add_box</i>Voter</a></span>
         <% } %> 
         <% if(showLinkToResultsPage){ %>
         <span style="position: absolute;left:120px;top:0px"><a href="/results"><i class="material-icons sidenav-trigger" style="font-size:2em;">check_box</i> Voir les résultats du vote </a></span>
         <% } %> 
-        <span style="position: absolute;left:200px;top:0px"> <span id="timer"></span> </span>
 
         <a style="position: absolute;top:0px;right:50px;color : #ffffff;font-weight: bold;font-size: 1.5em;"
-          href="#">CAMPAGNES AEECL</a>
+          href="#">CAMPAGNES</a>
 
       </div>
     </nav>
@@ -62,6 +65,25 @@
     var app = angular.module("app", []);
   </script>
 
+<h2 style="text-align: center;color:var(--secondary);">Ouverture des votes dans : </h2>
+<div id="clockdiv">
+  <div>
+    <span class="days"></span>
+    <div class="smalltext">Jours</div>
+  </div>
+  <div>
+    <span class="hours"></span>
+    <div class="smalltext">Heures</div>
+  </div>
+  <div>
+    <span class="minutes"></span>
+    <div class="smalltext">Minutes</div>
+  </div>
+  <div>
+    <span class="seconds"></span>
+    <div class="smalltext">Secondes</div>
+  </div>
+</div>
 
   <!--  Pour chaque asso: -->
   <% for (const asso in data) { if (Object.hasOwnProperty.call(data, asso)) { const listes=data[asso]; %>
@@ -77,7 +99,8 @@
       <div class="container cardsContainer ng-hide" ng-hide="<%=asso%>_cards">
         <!--  Une carte cliquable par liste avec le logo-->
         <% listes.forEach((liste, i)=> { %>
-          <% if (!liste.standalone) { %>
+          <%if (liste.clickable==true) {%>
+          <% if (liste.standalone==false) { %>
           <div class="card z-depth-4 listeCards"
             style="<%= liste.pipo ? 'box-shadow: 10px 10px 5px red;' : 'box-shadow: 10px 10px 5px green;'%>">
             <a ng-click="<%=asso%>_display_liste<%=i%>()">
@@ -86,7 +109,8 @@
               </div>
             </a>
           </div>
-          <% } else { %>
+          <% } %>
+          <% if (liste.standalone==true) { %>
             <div class="card z-depth-4 listeCards"
             style="<%= liste.pipo ? 'box-shadow: 10px 10px 5px red;' : 'box-shadow: 10px 10px 5px green;'%>">
             <a href="/<%=liste.link%>">
@@ -94,6 +118,14 @@
                 <img src="img/<%=liste.logo%>">
               </div>
             </a>
+          </div>
+          <% } %>
+          <%} if (liste.clickable==false) {%>
+            <div class="card z-depth-4 listeCards"
+            style="<%= liste.pipo ? 'box-shadow: 10px 10px 5px red;' : 'box-shadow: 10px 10px 5px green;'%>">
+              <div class="card-image">
+                <img src="img/<%=liste.logo%>">
+              </div>
           </div>
           <% } %>
           <% }); %>

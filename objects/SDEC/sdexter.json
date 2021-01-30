@@ -19,6 +19,7 @@
         "Revente de livres de langues",
         "Boîte à livres",
         "Concours d’écriture"
-    ]
+    ],
+    "clickable" :true
 }
     

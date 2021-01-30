@@ -21,7 +21,8 @@
         "Logo d’étage : on voudrait s’assurer que chaque étage des résidences possède un logo d’étage afin de le représenter.",
         "Package LaTeX PAO : on aimerait faire en sorte que le package LaTeX PAO soit mieux diffusé aux Centraliens. Cela permettrait, en plus de faciliter l’accès à LaTeX, d’avoir plus de retour sur le package dans le but de l’améliorer.",
         "Jeu de plateau : on voudrait créer un jeu de plateau sur le thème de Centrale, pourquoi pas sous la forme d’un trivial poursuite ou même d’un Monopoly un peu revisité."
-    ]
+    ],
+    "clickable" :true
     }
      
     

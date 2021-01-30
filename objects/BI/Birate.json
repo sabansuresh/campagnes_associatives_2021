@@ -21,7 +21,8 @@
     "socials" : {
     "Facebook" : "https://www.facebook.com/felix.mamadou",
     "Instagram" : "https://www.instagram.com/biratesdescaraibes/"
-    }
+    },
+    "clickable" :true
     
     }
      

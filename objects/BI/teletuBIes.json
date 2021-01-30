@@ -1,0 +1,27 @@
+{
+
+    "nom" : "TeletuBIes",
+    "standalone": false,
+    "membres" : ["Antoine Haynez (Atmos)",
+                "Augustin Soux (Prime)",
+                "Xiaoheng Zhang (Aurélia)",
+                "Gaetan Werp (Honyx)",
+                "Wei Jinjang (Emile)",
+                "Louise Wittman (Maha)",
+                "Philipp Gassman (Thârbac)",
+                "Yazan Al Zaitre (Maté)",
+                "Victor Verza (Uddy)",
+                "Vitor Miranda Gomes (Sensei)",
+                "Stephan Ndanga (Quilhe)"
+    ],   
+    "logo":"/BI/teletubies.jpg",
+    "description" : "Les TeletuBIes des quatre coins du monde sont enfin réunis à Centrale ! Ils sont plus fouqués que jamais pour ensoleiller votre confinement et ramener un ciel d’été sur le campus pour cette campagne !",
+    "socials" : {
+    "Facebook" : "https://www.facebook.com/ECLTeletuBIes/",
+    "Instagram" : "https://www.instagram.com/teletubies_ecl/"
+    },
+    "clickable" :true
+    }
+     
+    
+    

@@ -9,6 +9,20 @@
     <div style="margin-left:50px;">  <%= liste.description%> </div>
      <% } %>
 
+
+     
+     <% if (liste.descriptionList) {%>
+        <p class="defaultP"><i class="material-icons">event</i>Description</p>
+        <div style="max-width: 1000px;margin: auto;">
+        <ul style="text-align: left;">
+            <% liste.descriptionList.forEach(idee => { %>
+                <li> <%=idee%></li>
+                <br>
+            <% }); %>
+        </ul>
+        </div>
+     <% } %>
+
     <% if (liste.membres) {%>
     <p class="defaultP"><i class="material-icons">accessibility</i>Liste des membres </p>
     <div style="max-width: 500px;margin: auto;">
@@ -31,6 +45,7 @@
         </ul>
         </div>
      <% } %>
+
 
     <% if (liste.programme) {%>
     <p class="defaultP"><i class="material-icons">event</i>Programme de Mandat</p>

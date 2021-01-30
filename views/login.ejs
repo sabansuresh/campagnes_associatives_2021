@@ -17,19 +17,70 @@
   <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png">
   <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
 </head>
-<body>
+<body style="background-color: var(--secondary);">
 
 
-    <div style="max-width: 60%;margin:auto;background:var(--secondary);">
+  <div id="login-page" class="row" style="width: 70vw;margin: auto;">
     
+    <div class="col s12 z-depth-6 card-panel">
+      <% if (messages.error) { %>
+        <p style="color: red;"><%= messages.error %></p>
+      <% } %>
+      <form class="login-form" method="post" action='/login'>
+        <div class="row">
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">mail_outline</i>
+            <input class="validate" id="email" type="email" name="email">
+            <label for="email" data-error="wrong" data-success="right">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock_outline</i>
+            <input id="password" type="password" name="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+       
+        <div class="row">
+            <button type="submit" class="btn waves-effect waves-light col s8 offset-s2" style="color:white;background-color: var(--secondary);">CONNEXION</button>
+        </div>
 
-            <form action ="/login" method= "POST" >
-            
-            </form>
-    
+      </form>
     </div>
-
+  </div> 
 
 </body>
 
+<style>
+    /* label color */
+    .input-field label {
+     color: var(--secondary);
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color:  var(--secondary);
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid  var(--secondary);
+     box-shadow: 0 1px 0 0  var(--secondary);
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid  var(--secondary);
+     box-shadow: 0 1px 0 0  var(--secondary);
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid  var(--secondary);
+     box-shadow: 0 1px 0 0  var(--secondary);
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color:  var(--secondary);
+   }
+</style>
 </html>

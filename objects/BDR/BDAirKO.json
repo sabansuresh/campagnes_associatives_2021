@@ -1,0 +1,27 @@
+{
+
+    "nom" : "BD Air KO",
+    "standalone": false,
+    "membres" : ["Eloi Munoz (Skeunk)",
+                "Louis Poirson (Tchosen)",
+                "Jules Gillen (Coky)",
+                "Leonie Mouchel (Romyh)",
+                "Wenceslas Martinez (Masther)",
+                "Milan Cart (Dams)"
+    ],   
+    "logo":"/BDR/BDAirKO.png",
+    "descriptionList" : [  "Pour un brassage de qualité",
+                        "Pour parfaire vos lignées",
+                        "Le BD Air KO saura combler",
+                        "Vos exigences les plus poussées",
+                        "Restez connectés pour être au courant des actis et shotguns,",
+                        "Le BD Air KO pour une liste combative"
+                    ],
+    "socials" : {
+    "Facebook" : "https://www.facebook.com/BD-Air-KO-101245655145545/",
+    "Instagram" : "https://www.instagram.com/bd_air_ko/"
+    },
+     "clickable" : true
+    }
+     
+   

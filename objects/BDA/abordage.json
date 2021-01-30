@@ -1,6 +1,6 @@
 {
 
-"nom" : "A l’abord’art",
+"nom" : "À l’Abord’art",
 "standalone": false,
 "membres" : ["Prez : Romane Barge (Atha)",
             "SG : Sibylle Brunet (Huli)",
@@ -18,7 +18,8 @@
 "socials" : {
 "Facebook" : "https://www.facebook.com/A-labordart-101786721806542/",
 "Instagram" : "https://www.instagram.com/a_l_abord_art/"
-}
+},
+"clickable" :true
 
 }
  

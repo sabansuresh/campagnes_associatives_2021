@@ -1,0 +1,38 @@
+{
+
+    "nom" : "Dr Bonnes Str",
+    "standalone": false,
+    "membres" : ["Leridon Gaspard Dolce",
+                "Adam El Yakhlifi (Sernah)",
+                "Akin Agbulut (Pythife) ",
+                "Ambroise Lavis (Yapah)",
+                "Cheikh Wone (Trhunks)",
+                "Chloe Dubray (Haya)",
+                "Ferdinand Willemin (Terk)",
+                "Frédéric Legrand (Nhysseur)", 
+                "Hadi Bakaouni (Tshok)",
+                "Hugo Le Cour (Mivoh)",
+                "Julien Delaffon (Buster)",
+                "Léonie Mouchel (Romyh)",
+                "Louis Gillet (Systhan)",
+                "Malte Kroj (Zêcké)",
+                "Nicolas Jaune (Savey)",
+                "Pierre-Antoine Viudes (Yager)",
+                "Rayan Messekher (Dixou)",
+                "Réjane Bastien-Amaré (Nohmy)",
+                "Théo de Senneville (Sterio)",
+                "Thibault Ablain (Gharûh)",
+                "Zach Michel (Kidh)",
+                "Florent Peronnaud (Smogho)",
+                "Arthur Cosson (V)",
+                "Martin Nauche (Yousseyn)"
+    ],   
+    "logo":"/dBs/DrBonnesStr.png",
+    "description" : "Dr Bonnes Str est la nouvelle liste dBs, prête à guérir cette ambiance morose sur le campus grâce à ses sets endiablés.",
+    "socials" : {
+    "Facebook" : "https://www.facebook.com/DrBonnesStr2020"
+    },
+    "clickable" :true
+    }
+     
+   

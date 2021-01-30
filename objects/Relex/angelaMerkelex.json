@@ -1,0 +1,33 @@
+{
+    "nom" : "Angela Merkelex",
+    "standalone": false,
+    "membres" : ["Alexandre De Lambeye (Kloklo)",
+                "Matis Chappaz (Melynn)",
+                "Gabriel De La Noue (Wejdene)",
+                "Quentin Alcayde (Mara)",
+                "Paul Dewilde (Kémi)",
+                "Paul Laberenne (Orys)",
+                "Jean Beuselink (Skouter)",
+                "Marvin-Evans Kameni de Djani (Tof)",
+                "Nicolas Guillou (Bandor)",
+                "Alexandre Ferrière (Nõlo)",
+                "Lucile Audard (Nara)",
+                "Laure De La Grandville (Abda)",
+                "Emma Meyer (Necky)",
+                "Adrien Tassan-Mazzocco (Delihan)",
+                "Benjamin Frish (Nolphé)",
+                "Ferdinand Willemin (Terk)",
+                "Nathan Rogier (Biskow)",
+                "Thibault Duquesnoy (Padjy)"
+    ],   
+    "logo":"/relex/angelaMerkelex.jpg",
+    "descriptionList" : ["Pour une monde extérieur qui bouge, RelEx est là pour vous régaler.",
+                    "Pour une Allemagne du 21ème siècle, RelEx est là pour vous délecter.",
+                    "Pour une ComExt de qualité allemande, RelEx est là pour vous faire briller."],
+    "socials" : {
+    "Facebook" : "https://www.facebook.com/Angela-Merkelex-ECL-105083324816398"
+    },
+    "clickable" :true
+}
+     
+   
