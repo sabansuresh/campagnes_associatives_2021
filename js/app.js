@@ -26,7 +26,13 @@ document.addEventListener('DOMContentLoaded', function () {
   */
  
   const deadline = new Date('2021-02-04 00:00');
-  initializeClock('clockdiv', deadline);
+  if (new Date() < deadline){
+    document.getElementById('annoucement').style.display="none";
+    initializeClock('clockdiv', deadline);
+  }
+  else{
+    document.getElementById('countdown').style.display="none";
+  }
 })
 
 

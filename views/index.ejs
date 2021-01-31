@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>CAMPAGNES AEECL 2020</title>
+  <title>CAMPAGNES</title>
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="css/mystyle.css">
@@ -30,15 +30,9 @@
           <i class="material-icons sidenav-trigger" data-target="side-menu" style="font-size:2em;">menu</i>
         </span>
         <% if(showLinkToVotePage){ %>
-        <span style="position: absolute;left:40px;top:0px"><a href="/login"><i class="material-icons sidenav-trigger" style="font-size:2em;">lock</i></a></span>
+        <span style="position: absolute;left:40px;top:0px"><a href="/menu"><i class="material-icons sidenav-trigger" style="font-size:2em;">lock</i></a></span>
         <% }else{ %>
           <span style="position: absolute;left:40px;top:0px"><a><i class="material-icons sidenav-trigger" style="font-size:2em;opacity:0.8">lock</i></a></span>
-        <% } %> 
-        <% if(showLinkToVotePage){ %>
-          <span style="position: absolute;left:80px;top:0px"><a href="/vote"><i class="material-icons sidenav-trigger" style="font-size:2em;">add_box</i>Voter</a></span>
-        <% } %> 
-        <% if(showLinkToResultsPage){ %>
-        <span style="position: absolute;left:120px;top:0px"><a href="/results"><i class="material-icons sidenav-trigger" style="font-size:2em;">check_box</i> Voir les résultats du vote </a></span>
         <% } %> 
 
         <a style="position: absolute;top:0px;right:50px;color : #ffffff;font-weight: bold;font-size: 1.5em;"
@@ -64,7 +58,7 @@
   <script>
     var app = angular.module("app", []);
   </script>
-
+<div id="countdown">
 <h2 style="text-align: center;color:var(--secondary);">Ouverture des votes dans : </h2>
 <div id="clockdiv">
   <div>
@@ -84,7 +78,8 @@
     <div class="smalltext">Secondes</div>
   </div>
 </div>
-
+</div>
+<h2 id="annoucement" style="text-align: center;color:var(--secondary);">Les votes sont ouverts !</h2>
   <!--  Pour chaque asso: -->
   <% for (const asso in data) { if (Object.hasOwnProperty.call(data, asso)) { const listes=data[asso]; %>
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Campagnes 2021 - Résultats</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="icon" href="img/icon.png" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
+</head>
+
+<body>
+    <!-- navbar fixe en haut de l'écran-->
+    <div class="navbar-fixed">
+        <nav id="myNav" class="z-depth-0">
+            <div class="nav-wrapper">
+                <a style="position: absolute;top:0px;right:50px;color : #ffffff;font-weight: bold;font-size: 1.5em;"
+                    href="/">CAMPAGNES</a>
+                <span style="position: absolute;left:40px;top:0px"><a onclick="document.getElementById('formLogout').submit()"><i class="material-icons sidenav-trigger" style="font-size:2em;">logout</i></a></span>
+            </div>
+        </nav>
+    </div>
+    <form action = "/logout?_method=DELETE" method = "POST" id ="formLogout"></form>
+    
+    <div id="menu" style="display: flex;justify-content: space-around;flex-wrap: wrap;">
+
+        <% if (canVote) {%>
+        <a href="/vote" style="text-decoration: none;">
+            <div style="text-align:center;display: block;">
+               <h3 style="font-style: bold;font-size: 3em;color:var(--secondary);">Vote</h3>
+               <i class="material-icons" style="border: 1px solid var(--primary);border-radius: 7%;font-size:15em;color:var(--secondary);">how_to_vote</i>
+            </div>
+        </a>
+        <% } else {%>
+        <div style="text-align:center;display: block;opacity:0.5;">
+            <h3 style="font-style: bold;font-size: 3em;color:var(--secondary);">Vote</h3>
+            <i class="material-icons" style="border: 1px solid var(--primary);border-radius: 7%;font-size:15em;color:var(--secondary);">how_to_vote</i>
+        </div>
+        <% } %>
+
+        <% if (canSeeResults) {%>
+        <a href="/results" style="text-decoration: none;">
+            <div style="text-align:center;display: block;">
+                <h3 style="font-style: bold;font-size: 3em;color:var(--secondary);">Résultats</h3>
+                <i class="material-icons" style="border: 1px solid var(--primary);border-radius: 7%;font-size:15em;color:var(--secondary);">poll</i>
+            </div>
+        </a>
+        <% } else {%>
+            <div style="text-align:center;display: block;opacity:0.5;">
+                <h3 style="font-style: bold;font-size: 3em;color:var(--secondary);">Résultats</h3>
+                <i class="material-icons" style="border: 1px solid var(--primary);border-radius: 7%;font-size:15em;color:var(--secondary);">poll</i>
+            </div>
+        <% } %>
+    </div>
+</body>
+
+</html>

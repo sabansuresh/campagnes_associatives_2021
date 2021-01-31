@@ -20,11 +20,11 @@
 <body style="background-color: var(--secondary);">
 
 
-  <div id="login-page" class="row" style="width: 70vw;margin: auto;">
+  <div id="login-page" class="row" style="transform:translateY(50%);width: 70vw;margin: auto;">
     
     <div class="col s12 z-depth-6 card-panel">
       <% if (messages.error) { %>
-        <p style="color: red;"><%= messages.error %></p>
+        <p style="color: red;text-align: center;"><%= messages.error %></p>
       <% } %>
       <form class="login-form" method="post" action='/login'>
         <div class="row">
