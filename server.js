@@ -70,7 +70,7 @@ app.use(express.static(dir));
 
 
 // bdd
-createdb = function () {
+//createdb = function () {
   db.serialize(function () {
     db.run("CREATE TABLE assos (id  INTEGER PRIMARY KEY AUTOINCREMENT  , nom VARCHAR(100), listes TEXT)");
 
@@ -101,7 +101,7 @@ createdb = function () {
       console.log(row);
     });
   });
-};
+//};
 //createdb();
 
 app.get('/', async (req, res) => {
