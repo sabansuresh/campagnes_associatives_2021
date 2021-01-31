@@ -162,7 +162,12 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/login', async (req, res) => {
+if ((new Date() > new Date(voteDate)) && (new Date() < new Date(endVoteDate))){
   res.render("login.ejs"); // générer la page et la renvoyer
+}
+else{
+	res.redirect('/');
+}
 });
 
 app.get('/deadlink', async (req, res) => {
