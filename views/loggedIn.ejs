@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="css/mystyle.css">
     <link rel="icon" href="img/icon.png" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script type="module" src="/js/appMenu.js"></script>
     <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png">
     <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
 </head>
@@ -27,6 +27,26 @@
     </div>
     <form action = "/logout?_method=DELETE" method = "POST" id ="formLogout"></form>
     
+    <div id="countdownMenu">
+        <h2 style="text-align: center;color:var(--secondary);">Fermeture des votes dans : </h2>
+        <div id="clockdivMenu">
+          <div>
+            <span class="hoursMenu"></span>
+            <div class="smalltextMenu">Heures</div>
+          </div>
+          <div>
+            <span class="minutesMenu"></span>
+            <div class="smalltextMenu">Minutes</div>
+          </div>
+          <div>
+            <span class="secondsMenu"></span>
+            <div class="smalltextMenu">Secondes</div>
+          </div>
+        </div>
+        </div>
+        <h2 id="annoucementMenu" style="text-align: center;color:var(--secondary);">Les votes sont fermés !</h2>
+
+
     <div id="menu" style="display: flex;justify-content: space-around;flex-wrap: wrap;">
 
         <% if (canVote) {%>

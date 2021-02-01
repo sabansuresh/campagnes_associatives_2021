@@ -25,6 +25,7 @@ const teletubies = require('./objects/BI/teletuBIes.json');
 const bdr = require('./objects/BDR/BDAirKO.json');
 const gala = require('./objects/GALA/galalPacino.json');
 const relex = require('./objects/Relex/angelaMerkelex.json');
+const bar = require('./objects/BAR/barbie.json');
 
 listes = {
   "BDA": [abordage,{nom: "Gér'art Jugnot",pipo:true,clickable:false,logo:"/BDA/gerart.jpg", standalone: false},{nom: "Artine Marion",pipo:true,clickable:false,logo:"/BDA/artine.jpg", standalone: false},{nom: "Bureau de l'Amour",pipo:true,clickable:false,logo:"/BDA/amour.png", standalone: false}],
@@ -39,6 +40,7 @@ listes = {
   "PAO": [spationautes,{nom: "Pipo Sword Online",pipo:true,clickable:false,logo:"/PAO/pipao.png", standalone: false}],
   "WEI": [weistern,{nom:"Peaky WEI'nders", logo :"WEI/peaky.png" , pipo:false, standalone:true,link:"peaky", clickable : true}],
   "PLANET8CO" : [eco,{nom: "Pas-net & Kro",pipo:true,clickable:false,logo:"/ECO/panet.png", standalone: false}],
+  "BAR" : [bar],
   "BI": [birates,teletubies],
   "SDeC": [sdec],
   "RELEX":[relex],
@@ -162,7 +164,12 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/login', async (req, res) => {
+if (new Date() > new Date(voteDate)){
   res.render("login.ejs"); // générer la page et la renvoyer
+}
+else{
+	res.redirect('/');
+}
 });
 
 app.get('/deadlink', async (req, res) => {
