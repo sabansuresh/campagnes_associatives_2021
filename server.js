@@ -125,7 +125,7 @@ app.use(express.json());
 app.use(express.static(dir));
 
 // bdd
-createdb = function () {
+//createdb = function () {
   db.serialize(function () {
     db.run("CREATE TABLE assos (id  INTEGER PRIMARY KEY AUTOINCREMENT  , nom VARCHAR(100), listes TEXT)");
 
@@ -156,7 +156,7 @@ createdb = function () {
       console.log(row);
     });
   });
-};
+//};
 //createdb();
 
 app.get('/', async (req, res) => {
@@ -164,11 +164,7 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/login', async (req, res) => {
-<<<<<<< HEAD
-if (new Date() > new Date(voteDate)){
-=======
 if ((new Date() > new Date(voteDate)) && (new Date() < new Date(endVoteDate))){
->>>>>>> 51a4473f081ea2f558e3f82d25b6d3e12f4eb67c
   res.render("login.ejs"); // générer la page et la renvoyer
 }
 else{
