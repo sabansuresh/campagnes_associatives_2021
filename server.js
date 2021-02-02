@@ -24,7 +24,6 @@ const ph = require('./objects/PH/reconphort.json');
 const teletubies = require('./objects/BI/teletuBIes.json');
 const bdr = require('./objects/BDR/BDAirKO.json');
 const gala = require('./objects/GALA/galalPacino.json');
-const relex = require('./objects/Relex/angelaMerkelex.json');
 const bar = require('./objects/BAR/barbie.json');
 const dbs = require('./objects/DBS/DrBonnesStr.json');
 
@@ -36,23 +35,23 @@ listes = {
   ],
   "BDR": [bdr, { nom: "Bureau du Redoublement", pipo: true, clickable: false, logo: "/BDR/redoublement.png", standalone: false }, { nom: "BDéric Zemmour", pipo: true, clickable: false, logo: "/BDR/bdz.jpg", standalone: false }],
   "ECLAIR": [{ nom: "404 dead Link", logo: "ECLAIR/DeadLink.png", pipo: false, standalone: true, link: "deadlink", clickable: true },
-  { nom: "Adolf Éclair", logo: "ECLAIR/Adolf.png", pipo: true, standalone: false, clickable: true }
+  { nom: "Adolf Éclair", logo: "ECLAIR/Adolf.png", pipo: true, standalone: false, clickable: false }
   ],
   "PAO": [spationautes,{nom: "Pipo Sword Online",pipo:true,clickable:false,logo:"/PAO/pipao.png", standalone: false}],
   "WEI": [weistern,{nom:"Peaky WEI'nders", logo :"WEI/peaky.png" , pipo:false, standalone:true,link:"peaky", clickable : true},{nom:"We Are Still WEIting Again", logo :"WEI/weiting.png" , pipo:true, standalone:false,clickable : false}],
   "PLANET8CO" : [eco,{nom: "Pas-net & Kro",pipo:true,clickable:false,logo:"/ECO/panet.png", standalone: false}],
   "BAR" : [bar],
+  "PH": [ph,{nom: "L'EPHAD",pipo:true,clickable:false,logo:"/PH/ephad.png", standalone: false}],
   "BI": [birates,teletubies],
   "SDeC": [sdec],
-  "Dbs" : [dbs],
+  "DBS" : [dbs],
   "RELEX": [{ nom: "Angela Merkelex", logo: "RELEX/angelaMerkelex.jpg", pipo: false, html: "RELEX/angela", standalone: false, clickable: true }],
   "GALA": [gala],
-  "PH": [ph],
   "CTN": [ctn]
 }
 
-const voteDate = '2021-02-04 00:00';
-const endVoteDate = '2021-02-05 00:00';
+const voteDate = '2021-01-04 00:00';
+const endVoteDate = '2021-01-05 00:00';
 
 
 function checkAuthenticated(req, res, next) {
@@ -214,6 +213,7 @@ app.get('/vote', checkAuthenticated, async (req, res) => {
 app.get('/results_data', checkAuthenticated, async (req, res) => {
   if (new Date() > new Date(endVoteDate)) {
     results = await sqlite.all("SELECT * from assos", [])
+    console.log(results)
     res.json(results); // renvoyer les résultats au format json
   }
   else {
@@ -278,6 +278,10 @@ app.post('/vote_post', async (req, res) => {
 
 app.get('*', function (req, res) {
   res.redirect('/') // rediriger toutes les pages sur la page principale
+});
+
+app.get('/RE.pdf', function (req, res) {
+  res.sendFile("RE.pdf");
 });
 
 app.delete('/logout', async (req, res) => {
