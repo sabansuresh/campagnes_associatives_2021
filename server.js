@@ -50,8 +50,8 @@ listes = {
   "CTN": [ctn]
 }
 
-const voteDate = '2021-01-04 00:00';
-const endVoteDate = '2021-01-05 00:00';
+const voteDate = '2021-02-04 00:00';
+const endVoteDate = '2021-02-05 00:00';
 
 
 function checkAuthenticated(req, res, next) {
