@@ -13,7 +13,6 @@ const dotenv = require("dotenv").config();
 
 // Les données sur les listes
 
-const abordage = require('./objects/BDA/abordage.json');
 const spationautes = require('./objects/PAO/spationautes.json');
 const weistern = require('./objects/WEI/weistern.json');
 const sdec = require('./objects/SDEC/sdexter.json');
@@ -28,7 +27,7 @@ const bar = require('./objects/BAR/barbie.json');
 const dbs = require('./objects/DBS/DrBonnesStr.json');
 
 listes = {
-  "BDA": [abordage, { nom: "Gér'art Jugnot", pipo: true, clickable: false, logo: "/BDA/gerart.jpg", standalone: false }, { nom: "Artine Marion", pipo: true, clickable: false, logo: "/BDA/artine.jpg", standalone: false }, { nom: "Bureau de l'Amour", pipo: true, clickable: false, logo: "/BDA/amour.png", standalone: false }],
+  "BDA": [{ nom: "À l’Abord’art", logo: "BDA/logo.png", pipo: false, html: "BDA/abordage", standalone: false, clickable: true }, { nom: "Gér'art Jugnot", pipo: true, clickable: false, logo: "/BDA/gerart.jpg", standalone: false }, { nom: "Artine Marion", pipo: true, clickable: false, logo: "/BDA/artine.jpg", standalone: false }, { nom: "Bureau de l'Amour", pipo: true, clickable: false, logo: "/BDA/amour.png", standalone: false }],
   "BDE": [{ nom: "Les Gosthlisters", logo: "BDE/ghostlisters.png", pipo: false, standalone: true, link: "ghostlisters", clickable: true },
   { nom: "Koh-Lanta L'iste des héros", logo: "BDE/listeHeros.jpg", pipo: false, html: "BDE/heros", standalone: false, clickable: true },
   { nom: "Bureau Des Etoiles", logo: "/BDE/manda.jpg", pipo: true, clickable: false }
@@ -183,6 +182,10 @@ app.get('/ghostlisters', async (req, res) => {
 
 app.get('/peaky', async (req, res) => {
   res.render("presentations/WEI/peaky.ejs", { data: listes }); // générer la page et la renvoyer
+});
+
+app.get('/programme.png', async (req, res) => {
+  res.sendFile('programme.png');
 });
 
 app.get('/menu', checkAuthenticated, async (req, res) => {
