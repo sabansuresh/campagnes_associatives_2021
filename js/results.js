@@ -1,14 +1,14 @@
 $(document).ready(function () {
     var h = 360 * Math.random();
 
-    var options = {};
-
+    sumArray = (L)=>{
+        var sum = 0;
+        L.forEach((q)=>{
+            sum+=q;
+        })
+        return sum;
+    }
     $.get('/results_data', (res, err) => {
-        console.log('err' + err);
-        console.log('res' + res);
-        console.log(res[0]);
-        console.log(res[0].listes);
-        console.log(JSON.parse(res[0].listes));
 
         res.forEach(asso => {
             var h = 360 * Math.random();
@@ -42,7 +42,18 @@ $(document).ready(function () {
             $('#myChartDiv').append(html);
 
             ctx = $("#canvas_" + asso.nom);
+            
 
+            var options = {tooltips: {
+                callbacks: {
+                  label: function(tooltipItem, data) {
+                      let sum = sumArray(data['datasets'][0]['data'])
+                      let perc = Math.round(data['datasets'][0]['data'][tooltipItem['index']]/sum*10000)/100
+                    return data['labels'][tooltipItem['index']] + ': ' + perc + '%';
+                  }
+                }
+              }}
+            
             var myPieChart = new Chart(ctx, {
                 type: 'pie',
                 data: data,
