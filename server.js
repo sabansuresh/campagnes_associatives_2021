@@ -49,8 +49,8 @@ listes = {
   "CTN": [ctn]
 }
 
-const voteDate = '2021-02-04 00:00';
-const endVoteDate = '2021-02-05 00:00';
+const voteDate = '2021-02-03 23:00';
+const endVoteDate = '2021-02-04 23:00';
 
 
 function checkAuthenticated(req, res, next) {
@@ -269,10 +269,11 @@ app.post('/vote_post', async (req, res) => {
           console.log(l[req.body[row.asso]]);
 
           let sqlUpdate = "UPDATE assos SET listes=? WHERE nom=? "
-          await sqlite.all(sqlUpdate, [JSON.stringify(l), row.asso]);
+          var thisUpdate = await sqlite.all(sqlUpdate, [JSON.stringify(l), row.asso]);
 
-          var add_has_voted = await sqlite.all("update adherents set voted=true where id=?;", [thisUser.ID]);
+          
         }
+        var add_has_voted = await sqlite.all("update adherents set voted=true where id=?;", [thisUser.ID]);
       }
     }
     res.render("index.ejs", { data: listes, showLinkToVotePage: new Date() > new Date(voteDate), showLinkToResultsPage: false }); // générer la page et la renvoyer
