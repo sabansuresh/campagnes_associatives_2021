@@ -28,7 +28,7 @@ const dbs = require('./objects/DBS/DrBonnesStr.json');
 
 listes = {
   "BDA": [{ nom: "À l’Abord’art", logo: "BDA/logo.png", pipo: false, html: "BDA/abordage", standalone: false, clickable: true }, { nom: "Gér'art Jugnot", pipo: true, clickable: false, logo: "/BDA/gerart.jpg", standalone: false }, { nom: "Artine Marion", pipo: true, clickable: false, logo: "/BDA/artine.jpg", standalone: false }, { nom: "Bureau de l'Amour", pipo: true, clickable: false, logo: "/BDA/amour.png", standalone: false }],
-  "BDE": [{ nom: "Les Gosthlisters", logo: "BDE/ghostlisters.png", pipo: false, standalone: true, link: "ghostlisters", clickable: true },
+  "BDE": [{ nom: "Les GhostListers", logo: "BDE/ghostlisters.png", pipo: false, standalone: true, link: "ghostlisters", clickable: true },
   { nom: "Koh-Lanta L'iste des héros", logo: "BDE/listeHeros.jpg", pipo: false, html: "BDE/heros", standalone: false, clickable: true },
   { nom: "Bureau Des Etoiles", logo: "/BDE/manda.jpg", pipo: true, clickable: false }
   ],
