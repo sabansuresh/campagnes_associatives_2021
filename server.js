@@ -120,8 +120,8 @@ listes = {
 	CTN: [ ctn ]
 };
 
-const voteDate = '2021-02-03 23:00';
-const endVoteDate = '2021-03-04 23:00';
+const voteDate = '2020-02-10 23:00'; // ouvre le 11 févirer à minuit
+const endVoteDate = '2021-02-11 23:00'; // ferme 24h plus tard
 
 function checkAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) {
@@ -174,6 +174,7 @@ async function getUserbyId(id) {
 }
 
 const initializePassport = require('./passport-config');
+const { promises } = require('fs');
 initializePassport(passport, getUserbyEmail, getUserbyId);
 
 app.use(passport.initialize());
@@ -279,7 +280,7 @@ app.get('/results_data', checkAuthenticated, async (req, res) => {
 	if (new Date() > new Date(endVoteDate)) {
 		// results = await sqlite.all('SELECT * from assos', []);
 		results = await sqlite.all('SELECT vote from adherents', []);
-    console.log(results);
+		console.log(results);
 		res.json(results); // renvoyer les résultats au format json
 	} else {
 		res.sendStatus(500);
@@ -307,6 +308,78 @@ app.get('/results', async (req, res) => {
 		res.redirect('/');
 	}
 });
+
+async function fct_db() {
+	let sql_votes = 'SELECT vote from adherents;';
+	res_votes = await sqlite.all(sql_votes, []);
+	let sql = 'SELECT nom AS asso, listes FROM assos';
+	results = await sqlite.all(sql, []);
+	if (!results || !res_votes || results.length == 0 || res_votes.length == 0) {
+		console.error('erreur results.length == 0');
+		res.send(500);
+	} else {
+		var promises = [];
+		res_votes.forEach(async (vote) => {
+			promises.push(
+				new Promise(async (resolve, reject) => {
+					console.log(vote);
+					//console.log(vote[vote]);
+					if (vote['vote']) {
+						console.log(vote);
+						vote = vote['vote'];
+						vote = JSON.parse(vote);
+						console.log(vote);
+						resolve(vote['vote']);
+						for (let cpt = 0; cpt < results.length; cpt++) {
+							console.log(cpt);
+							row = results[cpt];
+							console.log(row);
+							l = JSON.parse(row.listes);
+							console.log('\nl:\n');
+							console.log(l);
+							console.log(row.asso);
+
+							if (vote[row.asso] && Object.hasOwnProperty.call(l, vote[row.asso])) {
+								console.log(vote[row.asso]);
+								l[vote[row.asso]].votes += 1;
+								console.log(l[vote[row.asso]]);
+
+								let sqlUpdate = 'UPDATE assos SET listes=? WHERE nom=? ';
+								var thisUpdate = await sqlite.all(sqlUpdate, [ JSON.stringify(l), row.asso ]);
+							}
+						}
+					} else {
+						resolve('vide');
+					}
+					//};
+				})
+			);
+		});
+		Promise.all(promises)
+			.then((a) => {
+				console.log(a);
+				a.forEach((b) => {
+					if (b != 'vide') {
+						console.log('cool');
+					}
+				});
+			})
+			.catch(() => {
+				console.log('err');
+			});
+	}
+}
+
+function up_db() {
+	console.log(new Date());
+	if (new Date() > new Date(endVoteDate)) {
+		fct_db(); // si la date de fin de vote est passée, mettre à jour la base de donnée en calculant les résultats
+	} else {
+		setTimeout(up_db, 1000 * 60 * 10); // on vérifie toutes les 10 minutes si la date de fin de vote est passée,
+	}
+}
+
+up_db();
 
 app.post('/vote_post', async (req, res) => {
 	// recoit les réponses au questionnaire de vote
@@ -338,8 +411,8 @@ app.post('/vote_post', async (req, res) => {
 					var thisUpdate = await sqlite.all(sqlUpdate, [ JSON.stringify(l), row.asso ]);
 				} */
 		//}
-    console.log(req.body);
-    console.log(JSON.stringify(req.body));
+		console.log(req.body);
+		console.log(JSON.stringify(req.body));
 		var add_has_voted = await sqlite.all('update adherents set voted=true, vote=? where id=?;', [
 			JSON.stringify(req.body),
 			thisUser.ID
