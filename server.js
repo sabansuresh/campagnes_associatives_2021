@@ -123,6 +123,8 @@ listes = {
 const voteDate = '2020-02-10 23:00'; // ouvre le 11 févirer à minuit
 const endVoteDate = '2021-02-11 23:00'; // ferme 24h plus tard
 
+var updbrunned = false;
+
 function checkAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) {
 		return next();
@@ -188,7 +190,7 @@ app.use(express.json());
 app.use(express.static(dir));
 
 // bdd
-createdb = function() {
+function createdb() {
 	db.serialize(function() {
 		db.run('CREATE TABLE assos (id  INTEGER PRIMARY KEY AUTOINCREMENT  , nom VARCHAR(100), listes TEXT)');
 
@@ -218,7 +220,7 @@ createdb = function() {
 			console.log(row);
 		});
 	});
-};
+}
 //createdb();
 
 app.get('/', async (req, res) => {
@@ -278,6 +280,9 @@ app.get('/vote', checkAuthenticated, async (req, res) => {
 
 app.get('/results_data', checkAuthenticated, async (req, res) => {
 	if (new Date() > new Date(endVoteDate)) {
+		if (!updbrunned) {
+			up_db();
+		}
 		// results = await sqlite.all('SELECT * from assos', []);
 		results = await sqlite.all('SELECT vote from adherents', []);
 		console.log(results);
@@ -303,6 +308,9 @@ app.post(
 
 app.get('/results', async (req, res) => {
 	if (new Date() > new Date(endVoteDate)) {
+		if (!updbrunned) {
+			up_db();
+		}
 		res.render('results.ejs', { listes: listes }); // générer la page et la renvoyer
 	} else {
 		res.redirect('/');
@@ -374,6 +382,7 @@ function up_db() {
 	console.log(new Date());
 	if (new Date() > new Date(endVoteDate)) {
 		fct_db(); // si la date de fin de vote est passée, mettre à jour la base de donnée en calculant les résultats
+		updbrunned = true;
 	} else {
 		setTimeout(up_db, 1000 * 60 * 10); // on vérifie toutes les 10 minutes si la date de fin de vote est passée,
 	}
