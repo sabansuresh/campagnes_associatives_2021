@@ -410,7 +410,7 @@ app.get('/results_data', checkAuthenticated, async (req, res) => {
 
 app.get('/udnkjdankjahada', async (req, res) => {
 	
-	await doOver()
+	await doOver(res)
 	results = await sqlite.all('SELECT * from assos', []);
 	res.json(results); // renvoyer les résultats au format json
 });
@@ -436,7 +436,7 @@ app.get('/results', async (req, res) => {
 });
 
 
-async function doOver(){
+async function doOver(res){
 	emptyCount = {BDA : {},BDE:{},BDR:{},ECLAIR:{},PAO:{},WEI:{},PLANET8CO:{},BAR:{},PH:{},BI:{},SDeC:{},DBS:{},RELEX:{},GALA:{},CTN:{}}
 	let sql_votes = 'SELECT vote from adherents WHERE voted=1;';
 	res_votes = await sqlite.all(sql_votes, []);
@@ -485,7 +485,7 @@ async function doOver(){
 function up_db() {
 	console.log(new Date());
 	if (new Date() > new Date(endVoteDate)) {
-		doOver(); // si la date de fin de vote est passée, mettre à jour la base de donnée en calculant les résultats
+		doOver(null); // si la date de fin de vote est passée, mettre à jour la base de donnée en calculant les résultats
 		updbrunned = true;
 	} else {
 		setTimeout(up_db, 1000 * 60 * 10); // on vérifie toutes les 10 minutes si la date de fin de vote est passée,
