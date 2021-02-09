@@ -24,12 +24,14 @@ function draw_chart(res) {
 			data.datasets[0].data.push(liste.votes);
 			if (liste.liste != 'blanc') {
 				data.labels.push(liste.liste);
+				
 				data.datasets[0].backgroundColor.push(Please.HSV_to_HEX({ h: h, s: 0.8, v: 0.75 }));
-				h += 360 / (JSON.parse(asso.listes).length - 1);
-				h %= 360;
+				console.log(liste,h)
 			} else {
 				data.labels.push('Vote blanc');
 			}
+			h+= 60;
+			h = h % 360;
 		});
 
 		html = '';
