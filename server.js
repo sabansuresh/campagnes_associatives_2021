@@ -290,11 +290,7 @@ app.get("/activate", async (req,res)=>{
 })
 
 app.get('/register', async (req, res) => {
-	if (new Date() > new Date(voteDate)) {
-		res.render('register.ejs', {message:""}); // générer la page et la renvoyer
-	} else {
-		res.redirect('/');
-	}
+	res.render('register.ejs', {message:""}); // générer la page et la renvoyer
 });
 
 app.get('/super-secret-login', async (req, res) => {
@@ -335,7 +331,6 @@ function hasEmpytElement(array){
 }
 
 app.post('/register', async (req, res) => {
-	if (new Date() > new Date(voteDate)) {
 		let thatBody = req.body;
 		let entry = [thatBody.nom,thatBody.prenom,(thatBody.prenom[0]+thatBody.nom).toLowerCase(),thatBody.email,thatBody.password]
 		if (hasEmpytElement(entry)){
@@ -350,9 +345,6 @@ app.post('/register', async (req, res) => {
 		else{
 			res.render('register.ejs', {message:"Un utilisateur avec ce mail existe déjà"}); 
 		}
-	} else {
-		res.redirect('/');
-	}
 });
 
 app.get('/deadlink', async (req, res) => {
