@@ -91,11 +91,13 @@
                 </h5> <!--  nom de l'asso-->
 
                 <%listes.forEach((liste, i)=> {%>
+                    <%if (!liste.pipo){ %>
                     <input id="<%=i%>_<%=asso%>" type="radio" name="<%=asso%>" value="<%=i%>" />
                     <label class="drinkcard-cc tooltipped z-depth-5" for="<%=i%>_<%=asso%>"
                         data-tooltip="<%= liste.nom %>"
-                        style="<%= liste.pipo ? 'box-shadow: 10px 10px 5px red;' : 'box-shadow: 10px 10px 5px green;' %>"><img
+                        style="box-shadow: 10px 10px 5px green;"><img
                             src="/img/<%=liste.logo%>" alt="" width="100px"></label>
+                    <% } %>
                     <%}); %>
 
                         <input id="blanc_<%=asso%>" type="radio" name="<%=asso%>" value="<%=listes.length%>" checked />
@@ -108,7 +110,7 @@
             <%} }%>
 
                 <button class="waves-effect waves-light btn-large" type="submit" name="action" id="submit_vote"
-                    onclick="M.toast({html: 'vote envoyé'})"> À voter
+                    onclick="M.toast({html: 'vote envoyé'})"> A voté
                     <i class="material-icons right">send</i>
                 </button>
     </form>

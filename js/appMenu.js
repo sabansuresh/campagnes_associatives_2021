@@ -1,5 +1,5 @@
 function countdown() {
-    var timeLeft = +new Date('2021-02-05 00:00') - +new Date(); // changer la date des votes
+    var timeLeft = +new Date('2021-02-12 00:00') - +new Date(); // changer la date des votes
   
     var hoursLeft = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
     var minutesLeft = Math.floor((timeLeft / 1000) / 60 % 60);
@@ -16,7 +16,7 @@ function countdown() {
   
   document.addEventListener('DOMContentLoaded', function () {
    
-    const deadline = new Date('2021-02-05 00:00');
+    const deadline = new Date('2021-02-12 00:00');
     if (new Date() < deadline){
       document.getElementById('annoucementMenu').style.display="none";
       initializeClock('clockdivMenu', deadline);

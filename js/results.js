@@ -64,6 +64,7 @@ function draw_chart(res) {
 
 $(document).ready(function() {
 	$.get('/results_data', (res, err) => {
-		draw_chart(data);
+		console.log(res)
+		draw_chart(res);
 	});
 });

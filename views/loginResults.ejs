@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CAMPAGNES AEECL 2020</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/mystyle.css">
+  <link rel="icon" href="img/icon.png" />
+   <!-- Materialize compiled and minified CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script type="module" src="/js/app.js"></script>
+  <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png">
+  <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
+</head>
+<body style="background-color: var(--secondary);">
+
+
+  <div id="login-page" class="row" style="transform:translateY(50%);width: 70vw;margin: auto;">
+    
+    <div class="col s12 z-depth-6 card-panel">
+      <% if (message) { %>
+        <p style="color: red;text-align: center;"><%= message %></p>
+      <% } %>
+      <form class="login-form" method="post" action='/super-secret-results'>
+      <div class="row"></div>
+      <div class="row"></div>
+      <div class="row"></div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">lock_outline</i>
+            <input id="password" type="password" name="password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn waves-effect waves-light col s8 offset-s2" style="color:white;background-color: var(--secondary);">CONNEXION</button>
+        </div>
+
+      </form>
+    </div>
+  </div> 
+
+</body>
+
+<style>
+    /* label color */
+    .input-field label {
+     color: var(--secondary);
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color:  var(--secondary);
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid  var(--secondary);
+     box-shadow: 0 1px 0 0  var(--secondary);
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid  var(--secondary);
+     box-shadow: 0 1px 0 0  var(--secondary);
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid  var(--secondary);
+     box-shadow: 0 1px 0 0  var(--secondary);
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color:  var(--secondary);
+   }
+</style>
+</html>

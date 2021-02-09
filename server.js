@@ -26,6 +26,7 @@ const gala = require('./objects/GALA/galalPacino.json');
 const bar = require('./objects/BAR/barbie.json');
 const dbs = require('./objects/DBS/DrBonnesStr.json');
 
+
 listes = {
 	BDA: [
 		{
@@ -120,11 +121,23 @@ listes = {
 	CTN: [ ctn ]
 };
 
-const voteDate = '2020-02-10 23:00'; // ouvre le 11 févirer à minuit
+const voteDate = '2021-02-10 23:00'; // ouvre le 11 févirer à minuit
 const endVoteDate = '2021-02-11 23:00'; // ferme 24h plus tard
+const viewResults = '2021-02-12 17:32'; // ferme 24h plus tard
 
 var updbrunned = false;
 
+
+async function existsMail(email){
+	let sqlCheck = "SELECT * FROM adherents WHERE Email = ?";
+	let res = await sqlite.all(sqlCheck,[email]);
+	if (res.length==0){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
 function checkAuthenticated(req, res, next) {
 	if (req.isAuthenticated()) {
 		return next();
@@ -136,7 +149,6 @@ async function checkHasVoted(ID) {
 	let sqlCheck = 'SELECT * FROM adherents WHERE ID = (?)';
 	res = await sqlite.all(sqlCheck, [ ID ]);
 	if (res.length == 0) {
-		console.log('he');
 		return -1;
 	} else {
 		if (res[0].voted == 1) {
@@ -166,6 +178,7 @@ var dir = path.join(__dirname);
 async function getUserbyEmail(email) {
 	let sql = 'SELECT * FROM adherents Where Email = (?)';
 	results = await sqlite.all(sql, [ email.toLowerCase() ]);
+	console.log(results)
 	return results[0];
 }
 
@@ -173,6 +186,12 @@ async function getUserbyId(id) {
 	let sql = 'SELECT * FROM adherents Where ID = (?)';
 	results = await sqlite.all(sql, [ id ]);
 	return results[0];
+}
+
+async function getAllPendingUsers(){
+	let sqlGetPendingUsers = "SELECT * FROM pending_users";
+	results = await sqlite.all(sqlGetPendingUsers,[])
+	return results;
 }
 
 const initializePassport = require('./passport-config');
@@ -239,6 +258,103 @@ app.get('/login', async (req, res) => {
 	}
 });
 
+app.get("/fetch/pending", async (req,res)=> {
+
+	let pending = await getAllPendingUsers()
+	res.json(pending);
+
+})
+
+app.get("/delete", async (req,res)=>{
+	let id = req.query.id;
+	let sqlDelete = "DELETE FROM pending_users WHERE ID= ?"
+	let results = await sqlite.all(sqlDelete,[id])
+	res.sendStatus(200)
+})
+
+app.get("/activate", async (req,res)=>{
+	let id = req.query.id;
+	let sqlQuerry = "SELECT * FROM pending_users WHERE ID = ?"
+	let querryResults = await sqlite.all(sqlQuerry,[id])
+	if (querryResults!=null){
+		let thatGuy = querryResults[0]
+		let entry = [thatGuy.Nom,thatGuy.Prenom,thatGuy.ID,thatGuy.Email.toLowerCase(),thatGuy.password,0,null]
+		let sqlAdd = "INSERT INTO adherents (Nom,Prenom,ID,Email,password,voted,vote) VALUES (?,?,?,?,?,?,?)"
+		let resultsAdd = sqlite.all(sqlAdd,entry);
+		let sqlDelete = "DELETE FROM pending_users WHERE ID= ?"
+		let resultsRemove = await sqlite.all(sqlDelete,[id], (ok,err)=>{
+		res.sendStatus(200)
+	})
+	res.sendStatus(500)
+}
+})
+
+app.get('/register', async (req, res) => {
+	if (new Date() > new Date(voteDate)) {
+		res.render('register.ejs', {message:""}); // générer la page et la renvoyer
+	} else {
+		res.redirect('/');
+	}
+});
+
+app.get('/super-secret-login', async (req, res) => {
+		res.render('loginAdmin.ejs', {message:""}); // générer la page et la renvoyer
+});
+
+app.post('/super-secret-login', async (req, res) => {
+	if (req.body.password == "3yXm8KMUdbrafmnn"){
+		res.render("mode.ejs");
+	}
+	else{
+		res.render('loginAdmin.ejs', {message:"Mauvais mot de passe"});
+	}
+});
+
+app.get('/super-secret-results', async (req, res) => {
+	res.render('loginResults.ejs', {message:""});
+});
+
+
+app.post('/super-secret-results', async (req, res) => {
+	if (req.body.password == "ynQvW5xaergRJ76V"){
+		res.render("resultsPreview.ejs");
+	}
+	else{
+		res.render('loginResults.ejs', {message:"Mauvais mot de passe"});
+	}
+});
+
+
+function hasEmpytElement(array){
+	for (let cpt=0;cpt<array.length;cpt++){
+		if (array[cpt]==''||array[cpt]==null){
+			return true;
+		}
+	}
+	return false;
+}
+
+app.post('/register', async (req, res) => {
+	if (new Date() > new Date(voteDate)) {
+		let thatBody = req.body;
+		let entry = [thatBody.nom,thatBody.prenom,(thatBody.prenom[0]+thatBody.nom).toLowerCase(),thatBody.email,thatBody.password]
+		if (hasEmpytElement(entry)){
+			res.render('register.ejs', {message:"Remplissez tous les champs"}); 
+		}
+		let exists = await existsMail(thatBody.email)
+		if (!exists){
+		let sqlAddUser = "INSERT INTO pending_users (Nom,Prenom,ID,Email,password) VALUES (?,?,?,?,?)"
+		let results = await sqlite.all(sqlAddUser,entry);
+		res.redirect("/")
+		}
+		else{
+			res.render('register.ejs', {message:"Un utilisateur avec ce mail existe déjà"}); 
+		}
+	} else {
+		res.redirect('/');
+	}
+});
+
 app.get('/deadlink', async (req, res) => {
 	res.render('presentations/ECLAIR/404.ejs', { data: listes }); // générer la page et la renvoyer
 });
@@ -261,7 +377,7 @@ app.get('/menu', checkAuthenticated, async (req, res) => {
 	console.log(hasVoted);
 	conditionVote = new Date() < new Date(endVoteDate) && hasVoted == 0;
 	console.log(conditionVote);
-	conditionResults = new Date() > new Date(endVoteDate);
+	conditionResults = new Date() > new Date(viewResults);
 	res.render('loggedIn.ejs', { canVote: conditionVote, canSeeResults: conditionResults }); // générer la page et la renvoyer
 });
 
@@ -284,8 +400,8 @@ app.get('/results_data', checkAuthenticated, async (req, res) => {
 			up_db();
 		}
 		// results = await sqlite.all('SELECT * from assos', []);
-		results = await sqlite.all('SELECT vote from adherents', []);
-		console.log(results);
+		results = await sqlite.all('SELECT * from assos', []);
+		console.log(results)
 		res.json(results); // renvoyer les résultats au format json
 	} else {
 		res.sendStatus(500);
@@ -293,6 +409,8 @@ app.get('/results_data', checkAuthenticated, async (req, res) => {
 });
 
 app.get('/udnkjdankjahada', async (req, res) => {
+	
+	await doOver()
 	results = await sqlite.all('SELECT * from assos', []);
 	res.json(results); // renvoyer les résultats au format json
 });
@@ -317,8 +435,10 @@ app.get('/results', async (req, res) => {
 	}
 });
 
-async function fct_db() {
-	let sql_votes = 'SELECT vote from adherents;';
+
+async function doOver(){
+	emptyCount = {BDA : {},BDE:{},BDR:{},ECLAIR:{},PAO:{},WEI:{},PLANET8CO:{},BAR:{},PH:{},BI:{},SDeC:{},DBS:{},RELEX:{},GALA:{},CTN:{}}
+	let sql_votes = 'SELECT vote from adherents WHERE voted=1;';
 	res_votes = await sqlite.all(sql_votes, []);
 	let sql = 'SELECT nom AS asso, listes FROM assos';
 	results = await sqlite.all(sql, []);
@@ -326,62 +446,46 @@ async function fct_db() {
 		console.error('erreur results.length == 0');
 		res.send(500);
 	} else {
-		var promises = [];
-		res_votes.forEach(async (vote) => {
-			promises.push(
-				new Promise(async (resolve, reject) => {
-					console.log(vote);
-					//console.log(vote[vote]);
-					if (vote['vote']) {
-						console.log(vote);
-						vote = vote['vote'];
-						vote = JSON.parse(vote);
-						console.log(vote);
-						resolve(vote['vote']);
-						for (let cpt = 0; cpt < results.length; cpt++) {
-							console.log(cpt);
-							row = results[cpt];
-							console.log(row);
-							l = JSON.parse(row.listes);
-							console.log('\nl:\n');
-							console.log(l);
-							console.log(row.asso);
+		for (let cpt_vote=0;cpt_vote<res_votes.length;cpt_vote++){
+			currentVote = JSON.parse(res_votes[cpt_vote]['vote'])
+			for (let i = 0; i < Object.keys(currentVote).length-1; i++){
+	
+				key = Object.keys(currentVote)[i];
+				indexVote = currentVote[key]
+				if (indexVote!=''){
+				if (emptyCount[key][indexVote]==null){
+					emptyCount[key][indexVote]=1;
+				}
+				else{
+					emptyCount[key][indexVote]++;
+				}
+			}
+			}
+		}
+	}
 
-							if (vote[row.asso] && Object.hasOwnProperty.call(l, vote[row.asso])) {
-								console.log(vote[row.asso]);
-								l[vote[row.asso]].votes += 1;
-								console.log(l[vote[row.asso]]);
-
-								let sqlUpdate = 'UPDATE assos SET listes=? WHERE nom=? ';
-								var thisUpdate = await sqlite.all(sqlUpdate, [ JSON.stringify(l), row.asso ]);
-							}
-						}
-					} else {
-						resolve('vide');
-					}
-					//};
-				})
-			);
-		});
-		Promise.all(promises)
-			.then((a) => {
-				console.log(a);
-				a.forEach((b) => {
-					if (b != 'vide') {
-						console.log('cool');
-					}
-				});
-			})
-			.catch(() => {
-				console.log('err');
-			});
+	for (let cptKeyAsso =0;cptKeyAsso<Object.keys(emptyCount).length;cptKeyAsso++){
+		currentAsso = Object.keys(emptyCount)[cptKeyAsso]
+		let objAsso = emptyCount[currentAsso]
+		let finalRes = []
+		for (let cptKeyListe=0;cptKeyListe<Object.keys(objAsso).length;cptKeyListe++){
+			currentIndex = Object.keys(objAsso)[cptKeyListe];
+			if (currentIndex>listes[currentAsso].length-1){
+				finalRes.push({"liste" : "blanc", "votes" : objAsso[currentIndex]  })
+			}
+			else{
+			finalRes.push({"liste" : listes[currentAsso][parseInt(currentIndex)]["nom"], "votes" : objAsso[currentIndex]  })
+			}
+		}
+		let sqlUpdate = 'UPDATE assos SET listes=? WHERE nom=? ';
+		var thisUpdate = await sqlite.all(sqlUpdate, [  JSON.stringify(finalRes), currentAsso ]);
 	}
 }
 
 function up_db() {
 	console.log(new Date());
 	if (new Date() > new Date(endVoteDate)) {
-		fct_db(); // si la date de fin de vote est passée, mettre à jour la base de donnée en calculant les résultats
+		doOver(); // si la date de fin de vote est passée, mettre à jour la base de donnée en calculant les résultats
 		updbrunned = true;
 	} else {
 		setTimeout(up_db, 1000 * 60 * 10); // on vérifie toutes les 10 minutes si la date de fin de vote est passée,

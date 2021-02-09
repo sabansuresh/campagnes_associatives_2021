@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CAMPAGNES AEECL 2020</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/mystyle.css">
+  <link rel="icon" href="img/icon.png" />
+   <!-- Materialize compiled and minified CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script type="module" src="/js/app.js"></script>
+  <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png">
+  <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
+</head>
+<body style="background-color: var(--secondary);">
+
+
+    <p style="padding-top:50px;margin-left: 45px;margin-right: 45px;text-align: center;color:white;font-size:1.5em;">Les comptes créés ici sont soumis à une approbation manuelle, il faut compter un léger délai avant d'essayer de vous connecter.<br><br>Merci de votre compréhension</p>
+
+  <div id="login-page" class="container" style="padding-top:50px;width: 70vw;margin: auto;">
+    
+    <div class="col s12 z-depth-6 card-panel">
+      <% if (message) { %>
+        <p style="color: red;text-align: center;"><%= message %></p>
+      <% } %>
+      <form class="login-form" method="post" action='/register'>
+        <div class="row">
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix">perm_identity</i>
+            <input class="validate" id="nom" name="nom" type="text">
+            <label for="nom" data-error="wrong" data-success="right">Nom</label>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">perm_identity</i>
+              <input class="validate" id="prenom" name="prenom" type="text">
+              <label for="prenom" data-error="wrong" data-success="right">Prenom</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">date_range</i>
+              <input class="validate" id="promo" name="promo" type="number">
+              <label for="promo" data-error="wrong" data-success="right">Promo</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">mail_outline</i>
+              <input class="validate" id="email" type="email" name="email">
+              <label for="email" data-error="wrong" data-success="right">Email</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">vpn_key</i>
+              <input class="validate" id="password" name="password" type="text">
+              <label for="password" data-error="wrong" data-success="right">Mot de passe</label>
+            </div>
+          </div>
+
+        <div class="row">
+            <button type="submit" class="btn waves-effect waves-light col s8 offset-s2" style="color:white;background-color: var(--secondary);">Envoyer</button>
+        </div>
+
+      </form>
+    </div>
+  </div> 
+
+</body>
+
+<style>
+    /* label color */
+    .input-field label {
+     color: var(--secondary);
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color:  var(--secondary);
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid  var(--secondary);
+     box-shadow: 0 1px 0 0  var(--secondary);
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid  var(--secondary);
+     box-shadow: 0 1px 0 0  var(--secondary);
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid  var(--secondary);
+     box-shadow: 0 1px 0 0  var(--secondary);
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color:  var(--secondary);
+   }
+</style>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Campagnes 2021 - Résultats</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="icon" href="img/icon.png" />
+    <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png">
+    <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4">
+</head>
+
+<body>
+    <!-- navbar fixe en haut de l'écran-->
+    <div class="navbar-fixed">
+        <nav id="myNav" class="z-depth-0">
+            <div class="nav-wrapper">
+                <a style="position: absolute;top:0px;right:50px;color : #ffffff;font-weight: bold;font-size: 1.5em;"
+                    href="/">CAMPAGNES</a>
+                <span style="position: absolute;left:40px;top:0px"><a onclick="document.getElementById('formLogout').submit()"><i class="material-icons sidenav-trigger" style="font-size:2em;">logout</i></a></span>
+            </div>
+        </nav>
+    </div>
+    <form action = "/logout?_method=DELETE" method = "POST" id ="formLogout"></form>
+    
+
+    <div id="list"></div>
+</body>
+
+</html>
+
+<script>
+
+
+    
+const renderPendingUsers = (data,id)=>{
+
+const list = document.getElementById("list");
+
+const html = `
+<div class="card-panel match white"style="display:block;" data-id=${id}>
+
+    <div class = "row"> 
+        <div class="col s10"><p>${data.Nom} ${data.Prenom} </p> </div>
+        <div class= "col s2 left-align"><a onclick="activateDiv('${id}')"><i class="material-icons right-align" style = "color:green;">checkmark</i></a></div>
+     </div>
+    <div class = "row"> 
+        <div class= "col s10"> ${data.Email} </div>
+        <div class="col s2 left-align"> <a onclick="removeDiv('${id}')"><i class="material-icons " style = "color:red;">delete</i></a ></div>
+    </div>
+
+<div>`;
+
+list.innerHTML+=html;
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+fetch('/fetch/pending').then( response => response.json() ).then(function(data) {
+console.log(data)
+for (let i=0;i<data.length;i++){
+const guy = data[i];
+renderPendingUsers(guy,guy.ID);
+}
+})
+})
+
+async function removeDiv(id){
+fetch(`/delete?id=${id}`).then(()=>{
+const div = document.querySelector(`.card-panel[data-id="${id}"]`);
+console.log(div)
+div.remove();
+})
+}
+
+async function activateDiv(id){
+fetch(`/activate?id=${id}`).then( ()=>{
+const div = document.querySelector(`.card-panel[data-id="${id}"]`);
+console.log(div)
+div.remove();
+})
+}
+
+</script>

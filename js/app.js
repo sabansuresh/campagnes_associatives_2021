@@ -1,5 +1,5 @@
 function countdown() {
-  var timeLeft = +new Date('2021-02-04 00:00') - +new Date(); // changer la date des votes
+  var timeLeft = +new Date('2021-02-11 00:00') - +new Date(); // changer la date des votes
 
   var daysLeft = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
   var hoursLeft = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
@@ -25,13 +25,17 @@ document.addEventListener('DOMContentLoaded', function () {
   setInterval(countdown, 1000);
   */
  
-  const deadline = new Date('2021-02-04 00:00');
+  const deadline = new Date('2021-02-11 00:00');
+  const fermetureVote = new Date('2021-02-12 00:00');
   if (new Date() < deadline){
     document.getElementById('annoucement').style.display="none";
     initializeClock('clockdiv', deadline);
   }
-  else{
+  if (new Date() > deadline && new Date() <fermetureVote){
     document.getElementById('countdown').style.display="none";
+  }
+  if (new Date() >fermetureVote){
+    document.getElementById('annoucement').innerHTML ="Les votes sont fermés";
   }
 })
 
