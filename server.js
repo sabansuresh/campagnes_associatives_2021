@@ -374,7 +374,7 @@ app.get('/menu', checkAuthenticated, async (req, res) => {
 });
 
 app.get('/vote', checkAuthenticated, async (req, res) => {
-	if (new Date() > new Date(voteDate) && new Date() < new Date(endVoteDate)) {
+	if (new Date() > new Date(viewResults) && new Date() < new Date(endVoteDate)) {
 		thisUser = await req.user;
 		if ((await checkHasVoted(thisUser.ID)) == 0) {
 			res.render('vote.ejs', { data: listes }); // générer la page et la renvoyer
@@ -387,7 +387,7 @@ app.get('/vote', checkAuthenticated, async (req, res) => {
 });
 
 app.get('/results_data', checkAuthenticated, async (req, res) => {
-	if (new Date() > new Date(endVoteDate)) {
+	if (new Date() > new Date(viewResults)) {
 		if (!updbrunned) {
 			up_db();
 		}
